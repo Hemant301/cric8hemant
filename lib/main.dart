@@ -1,6 +1,8 @@
 import 'package:cric8hemant/auth/login.dart';
 import 'package:cric8hemant/auth/signin.dart';
+import 'package:cric8hemant/screen/bottombar.dart';
 import 'package:cric8hemant/screen/choselogin.dart';
+import 'package:cric8hemant/screen/home.dart';
 import 'package:cric8hemant/screen/splashascreen.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +24,8 @@ class MyApp extends StatelessWidget {
         "/choselogin": (context) => ChooseAuth(),
         "/signin": (context) => Signup(),
         "/login": (context) => LoginScreen(),
-        // "/choselogin": (context) => ChooseAuth(),
+        "/home": (context) => HomePage(),
+        "/bottombar": (context) => Nav()
         // "/choselogin": (context) => ChooseAuth(),
         // "/choselogin": (context) => ChooseAuth(),
       },

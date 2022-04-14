@@ -1,3 +1,5 @@
+import 'package:cric8hemant/screen/home.dart';
+import 'package:cric8hemant/screen/profile.dart';
 import 'package:flutter/material.dart';
 
 class Nav extends StatefulWidget {
@@ -9,11 +11,8 @@ int selectedIndex = 0;
 
 class _NavState extends State<Nav> {
   List<Widget> _widgetOptions = <Widget>[
-    // HomneScreen(),
-    // CattgoryPage(),
-    // Orderage(),
-    // Deliver(),
-    // MyCartPage(),
+    HomePage(),
+    Profile(),
   ];
 
   void _onItemTap(int index) {
@@ -48,23 +47,23 @@ class _NavState extends State<Nav> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.menu,
+              Icons.meeting_room,
             ),
             label: 'Meet',
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.shopping_cart,
+              Icons.system_update_tv_rounded,
             ),
             label: 'Learn',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.directions_bus_filled),
+            icon: Icon(Icons.book),
             label: 'Book',
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.add_shopping_cart,
+              Icons.person,
             ),
             label: 'Me',
           ),
