@@ -1,4 +1,7 @@
+import 'package:cric8hemant/screen/book.dart';
 import 'package:cric8hemant/screen/home.dart';
+import 'package:cric8hemant/screen/learn.dart';
+import 'package:cric8hemant/screen/meet.dart';
 import 'package:cric8hemant/screen/profile.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +15,9 @@ int selectedIndex = 0;
 class _NavState extends State<Nav> {
   List<Widget> _widgetOptions = <Widget>[
     HomePage(),
+    MeetPage(),
+    LearnPage(),
+    BookPage(),
     Profile(),
   ];
 
