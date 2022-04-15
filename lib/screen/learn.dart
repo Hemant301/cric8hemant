@@ -89,7 +89,7 @@ class LearnPage extends StatelessWidget {
                         ),
                         Column(
                             children: List.generate(
-                                4,
+                                3,
                                 (index) => SingleChildScrollView(
                                       scrollDirection: Axis.vertical,
                                       child: Column(
@@ -141,78 +141,4 @@ class LearnPage extends StatelessWidget {
       )),
     );
   }
-}
-
-Widget resources(context) {
-  return Align(
-    alignment: Alignment.bottomCenter,
-    child: SizedBox(
-      height: MediaQuery.of(context).size.height * 0.6,
-      child: Card(
-        color: Colors.black,
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(40.0))),
-        child: Column(
-          children: [
-            const Padding(
-              padding: EdgeInsets.all(15.0),
-              child: Text(
-                "Resources",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20),
-              ),
-            ),
-            tile(context),
-            tile(context),
-            tile(context),
-          ],
-        ),
-      ),
-    ),
-  );
-}
-
-Widget tile(context) {
-  return GestureDetector(
-    onTap: () {
-      Navigator.pushNamed(context, "/resource");
-    },
-    child: ListTile(
-      leading: const Image(image: AssetImage("assets/ball.png")),
-      title: const Padding(
-        padding: EdgeInsets.all(8.0),
-        child: Text(
-          "Altamash Husain",
-          style: TextStyle(color: Colors.white),
-        ),
-      ),
-      subtitle: Column(
-        children: [
-          Row(
-            children: const [
-              Icon(Icons.watch_later_outlined),
-              Text(
-                "15 min ago",
-                style: TextStyle(color: Colors.white),
-              )
-            ],
-          ),
-          const Text(
-            "Lorem ipsum dolor sit amet",
-            style: TextStyle(color: Colors.white),
-          ),
-          const Text(
-            "Lorem ipsum dolor sit",
-            style: TextStyle(color: Colors.white),
-          ),
-          const Text(
-            "Lorem ipsum",
-            style: TextStyle(color: Colors.white),
-          ),
-        ],
-      ),
-    ),
-  );
 }
