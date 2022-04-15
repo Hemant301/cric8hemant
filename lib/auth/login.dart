@@ -83,7 +83,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       width: double.infinity,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(primary: primaryLight),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, "/bottombar");
+                        },
                         child: const Text(
                           "Login",
                           style: TextStyle(color: Colors.black, fontSize: 12),
@@ -96,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         const Text("Create an account"),
                         TextButton(
                             onPressed: () {
-                              Navigator.pushNamed(context, "/signin");
+                              Navigator.pushNamed(context, "/home");
                             },
                             child: const Text(
                               "Signup",
