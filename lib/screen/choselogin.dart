@@ -94,9 +94,29 @@ class ChooseAuth extends StatelessWidget {
                         "Signin",
                         style: TextStyle(
                             color: Colors.white, fontWeight: FontWeight.bold),
-                      ))
+                      )),
                 ],
               ),
+              SizedBox(
+                height: 20,
+              ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Container(
+                  height: 40,
+                  width: 150,
+                  color: Colors.white,
+                  child: TextButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, "/bottombar");
+                      },
+                      child: const Text(
+                        "Skip for Now",
+                        style: TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.bold),
+                      )),
+                ),
+              )
             ],
           ),
         ),
