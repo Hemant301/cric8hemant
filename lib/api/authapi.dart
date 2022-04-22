@@ -26,7 +26,32 @@ class AuthApi {
         'pincode': pincode,
         'state': state,
         'username': username,
-        'password': password
+        'password': password,
+        'user_img': 'null',
+      });
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        print(response.body);
+        return jsonDecode(response.body) as Map;
+      } else {
+        print('Request failed with status: ${response.statusCode}.');
+      }
+    } catch (e) {
+      print(e);
+    } finally {
+      client.close();
+    }
+  }
+
+  Future<dynamic> doLogin({
+    String username = "",
+    String password = "",
+  }) async {
+    var client = http.Client();
+    try {
+      final response = await client
+          .post(Uri.parse("${baseUrl}cricweb/api/Users/user_login"), body: {
+        'username': username,
+        'password': password,
       });
       if (response.statusCode == 200 || response.statusCode == 201) {
         print(response.body);

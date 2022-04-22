@@ -1,1 +1,1 @@
-const baseUrl = "https://pushpdiamonds.com/";
+const baseUrl = "http://play.magnifyingevents.com/";
