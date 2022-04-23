@@ -16,20 +16,20 @@ class AuthApi {
   }) async {
     var client = http.Client();
     try {
-      final response = await client
-          .post(Uri.parse("${baseUrl}cricweb/api/Users/user_signup"), body: {
-        'name': name,
-        'last_name': last_name,
-        'mob_no': mob_no,
-        'email': email,
-        'city': city,
-        'pincode': pincode,
-        'state': state,
-        'username': username,
-        'password': password,
-        'user_img': 'null',
-      });
-      if (response.statusCode == 200 || response.statusCode == 201) {
+      final response = await client.post(
+          Uri.parse("https://cric8innet.com/api/Users/app_user_signup"),
+          body: {
+            'name': name,
+            'last_name': last_name,
+            'mob_no': mob_no,
+            'email': email,
+            'city': city,
+            'pincode': pincode,
+            'state': state,
+            'username': username,
+            'password': password,
+          });
+      if (response.statusCode == 200 || response.statusCode == 200) {
         print(response.body);
         return jsonDecode(response.body) as Map;
       } else {
@@ -48,11 +48,12 @@ class AuthApi {
   }) async {
     var client = http.Client();
     try {
-      final response = await client
-          .post(Uri.parse("${baseUrl}cricweb/api/Users/user_login"), body: {
-        'username': username,
-        'password': password,
-      });
+      final response = await client.post(
+          Uri.parse("https://cric8innet.com/api/Users/user_login"),
+          body: {
+            'username': username,
+            'password': password,
+          });
       if (response.statusCode == 200 || response.statusCode == 201) {
         print(response.body);
         return jsonDecode(response.body) as Map;

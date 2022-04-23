@@ -1,1 +1,1 @@
-const baseUrl = "http://play.magnifyingevents.com/";
+const baseUrl = "https://cric8innet.com/";

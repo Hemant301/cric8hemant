@@ -237,6 +237,15 @@ class _SignupState extends State<Signup> {
                               password: passwordController1.text,
                             );
                             print(data);
+                            if (data['status'] == 200) {
+                              Navigator.pushReplacementNamed(
+                                  context, "/bottombar");
+                              Fluttertoast.showToast(msg: data['message']);
+                            } else {
+                              Fluttertoast.showToast(
+                                  msg: 'Something went worng');
+                              return;
+                            }
 
                             // Navigator.pushNamed(context, Routes.home);
                           },

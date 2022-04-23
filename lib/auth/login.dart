@@ -63,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             Icons.email,
                             color: Colors.black,
                           ),
-                          labelText: "Username"),
+                          labelText: "Email"),
                       controller: usernameController,
                     ),
                     const SizedBox(
@@ -100,7 +100,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           // print(data['status'].runtimeType);
                           if (data['status'] == 200) {
                             Fluttertoast.showToast(msg: data['message']);
-                            Navigator.pushNamed(context, "/bottombar");
+                            Navigator.pushReplacementNamed(
+                                context, "/bottombar");
                           } else {
                             Fluttertoast.showToast(msg: data['message']);
                             return;
