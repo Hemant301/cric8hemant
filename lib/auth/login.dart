@@ -1,5 +1,7 @@
+import 'package:cric8hemant/api/authapi.dart';
 import 'package:cric8hemant/util/const.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -61,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             Icons.email,
                             color: Colors.black,
                           ),
-                          labelText: "Username"),
+                          labelText: "Email"),
                       controller: usernameController,
                     ),
                     const SizedBox(
@@ -83,8 +85,27 @@ class _LoginScreenState extends State<LoginScreen> {
                       width: double.infinity,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(primary: primaryLight),
-                        onPressed: () {
-                          Navigator.pushNamed(context, "/bottombar");
+                        onPressed: () async {
+                          if (usernameController.text == "" ||
+                              passwordController.text == "") {
+                            Fluttertoast.showToast(
+                                msg: 'Enter Username and password');
+                            return;
+                          }
+                          AuthApi _api = AuthApi();
+                          Map data = await _api.doLogin(
+                            username: usernameController.text,
+                            password: passwordController.text,
+                          );
+                          // print(data['status'].runtimeType);
+                          if (data['status'] == 200) {
+                            Fluttertoast.showToast(msg: data['message']);
+                            Navigator.pushReplacementNamed(
+                                context, "/bottombar");
+                          } else {
+                            Fluttertoast.showToast(msg: data['message']);
+                            return;
+                          }
                         },
                         child: const Text(
                           "Login",
@@ -98,7 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         const Text("Create an account"),
                         TextButton(
                             onPressed: () {
-                              Navigator.pushNamed(context, "/home");
+                              Navigator.pushNamed(context, "/signin");
                             },
                             child: const Text(
                               "Signup",

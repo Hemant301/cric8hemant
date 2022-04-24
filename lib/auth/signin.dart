@@ -1,4 +1,6 @@
+import 'package:cric8hemant/api/authapi.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Signup extends StatefulWidget {
   const Signup({Key? key}) : super(key: key);
@@ -203,7 +205,48 @@ class _SignupState extends State<Signup> {
                                   RoundedRectangleBorder(
                                       borderRadius:
                                           BorderRadius.circular(50.0)))),
-                          onPressed: () {
+                          onPressed: () async {
+                            if (firstNameController.text == "" ||
+                                lastNameController.text == "" ||
+                                mobController.text == "" ||
+                                cityController.text == "" ||
+                                pincodeController.text == "" ||
+                                stateController.text == "" ||
+                                emailController.text == "" ||
+                                passwordController1.text == "" ||
+                                passwordController2.text == "" ||
+                                usernameController.text == "") {
+                              Fluttertoast.showToast(msg: 'Enter all form');
+                              return;
+                            } else if (passwordController1.text !=
+                                passwordController2.text) {
+                              Fluttertoast.showToast(
+                                  msg: 'Password do not match');
+                              return;
+                            }
+                            AuthApi _api = AuthApi();
+                            Map data = await _api.doSignup(
+                              name: firstNameController.text,
+                              last_name: lastNameController.text,
+                              mob_no: mobController.text,
+                              email: emailController.text,
+                              city: cityController.text,
+                              pincode: pincodeController.text,
+                              state: stateController.text,
+                              username: usernameController.text,
+                              password: passwordController1.text,
+                            );
+                            print(data);
+                            if (data['status'] == 200) {
+                              Navigator.pushReplacementNamed(
+                                  context, "/bottombar");
+                              Fluttertoast.showToast(msg: data['message']);
+                            } else {
+                              Fluttertoast.showToast(
+                                  msg: 'Something went worng');
+                              return;
+                            }
+
                             // Navigator.pushNamed(context, Routes.home);
                           },
                           child: const Text(

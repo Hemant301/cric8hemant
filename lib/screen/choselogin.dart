@@ -11,20 +11,21 @@ class ChooseAuth extends StatelessWidget {
         body: Stack(
       children: [
         const SizedBox(
-            child: Image(
-                width: double.infinity,
-                height: double.infinity,
-                fit: BoxFit.cover,
-                image: AssetImage("assets/signupbg.png"))),
-        const Padding(
-          padding: EdgeInsets.only(
-            top: 35,
-            left: 130,
-          ),
-          child: SizedBox(
+            child: const Center(
+          child: Image(
+              width: double.infinity,
+              height: double.infinity,
+              fit: BoxFit.cover,
+              image: AssetImage("assets/signupbg.png")),
+        )),
+        Positioned(
+          top: 40,
+          right: 0,
+          left: 0,
+          child: const SizedBox(
             width: 150,
             height: 100,
-            child: Align(
+            child: const Align(
               alignment: Alignment.topCenter,
               child: Image(image: AssetImage("assets/logo.png")),
             ),
@@ -97,7 +98,7 @@ class ChooseAuth extends StatelessWidget {
                       )),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               ClipRRect(

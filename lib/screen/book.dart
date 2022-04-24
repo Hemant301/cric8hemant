@@ -98,6 +98,9 @@ class BookPage extends StatelessWidget {
                 // ),
                 Column(
                   children: [
+                    SizedBox(
+                      height: 20,
+                    ),
                     Container(
                       padding: EdgeInsets.all(8),
                       width: MediaQuery.of(context).size.width - 20,
@@ -159,7 +162,7 @@ class BookPage extends StatelessWidget {
                                   ),
                                   Row(
                                     children: [
-                                       Icon(Icons.star),
+                                      Icon(Icons.star),
                                       Text("0.0(0 reating)"),
                                     ],
                                   ),
@@ -169,30 +172,40 @@ class BookPage extends StatelessWidget {
                             Column(
                               children: [
                                 Container(
-                                  height: 100,
-                                  width: 100,
+                                  height: 60,
+                                  width: 60,
                                   decoration: BoxDecoration(
-                                      color: Color.fromARGB(255, 109, 34, 34),
-                                      // boxShadow: [
-                                      //   BoxShadow(
-                                      //     color: Colors.grey.withOpacity(0.4),
-                                      //     spreadRadius: 1,
-                                      //     blurRadius: 1,
-                                      //     offset: Offset(1, 3), // changes position of shadow
-                                      //   ),
-                                      // ],
-                                      borderRadius: BorderRadius.circular(20),
-                                      border: Border.all(
-                                          color: Color.fromARGB(
-                                              255, 251, 251, 251),
-                                          width: 5)),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(15),
-                                    child: Image.network(
-                                      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80",
-                                      fit: BoxFit.cover,
-                                    ),
+                                    color: Color.fromARGB(255, 5, 3, 3),
+                                    // boxShadow: [
+                                    //   BoxShadow(
+                                    //     color: Colors.grey.withOpacity(0.4),
+                                    //     spreadRadius: 1,
+                                    //     blurRadius: 1,
+                                    //     offset: Offset(1, 3), // changes position of shadow
+                                    //   ),
+                                    // ],
+                                    borderRadius: BorderRadius.circular(20),
+                                    // border: Border.all(
+                                    //     color: Color.fromARGB(
+                                    //         255, 251, 251, 251),
+                                    //     width: 5)
                                   ),
+                                  child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(15),
+                                      child: Center(
+                                        child: Text(
+                                          "View",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      )
+                                      //  Image.network(
+                                      //   "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80",
+                                      //   fit: BoxFit.cover,
+                                      // ),
+                                      ),
                                 ),
                               ],
                             ),
