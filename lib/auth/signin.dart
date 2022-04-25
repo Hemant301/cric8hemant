@@ -238,8 +238,7 @@ class _SignupState extends State<Signup> {
                             );
                             print(data);
                             if (data['status'] == 200) {
-                              Navigator.pushReplacementNamed(
-                                  context, "/bottombar");
+                              Navigator.pushReplacementNamed(context, "/boot");
                               Fluttertoast.showToast(msg: data['message']);
                             } else {
                               Fluttertoast.showToast(

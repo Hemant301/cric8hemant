@@ -113,7 +113,7 @@ class ChooseAuth extends StatelessWidget {
                   color: Colors.white,
                   child: TextButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, "/bottombar");
+                        Navigator.pushNamed(context, "/boot");
                       },
                       child: const Text(
                         "Skip for Now",

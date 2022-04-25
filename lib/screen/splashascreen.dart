@@ -5,9 +5,9 @@ class SplahScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     Future.delayed(Duration(seconds: 3), () {
-        Navigator.pushReplacementNamed(context, "/choselogin");
-      });
+    Future.delayed(Duration(seconds: 3), () {
+      Navigator.pushReplacementNamed(context, "/choselogin");
+    });
     return Scaffold(
         body: Image(
       fit: BoxFit.cover,
