@@ -100,8 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           // print(data['status'].runtimeType);
                           if (data['status'] == 200) {
                             Fluttertoast.showToast(msg: data['message']);
-                            Navigator.pushReplacementNamed(
-                                context, "/bottombar");
+                            Navigator.pushReplacementNamed(context, "/boot");
                           } else {
                             Fluttertoast.showToast(msg: data['message']);
                             return;
