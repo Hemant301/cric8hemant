@@ -257,7 +257,7 @@ class _SignupState extends State<Signup> {
                   ),
                   // const Spacer(),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.15,
+                    height: 20,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

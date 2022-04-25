@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -16,20 +17,41 @@ class HomePage extends StatelessWidget {
               image: AssetImage('assets/homebg.png')),
           Column(
             children: [
-              Row(
-                children: [
-                  // const Padding(
-                  //   padding: EdgeInsets.only(left: 8),
-                  //   child: Text("Crick8inNet"),
-                  // ),
-                  const Spacer(),
-                  IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.notifications,
-                        color: Colors.white,
-                      ))
-                ],
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    // const Padding(
+                    //   padding: EdgeInsets.only(left: 8),
+                    //   child: Text("Crick8inNet"),
+                    // ),
+                    Container(
+                      padding: EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                          color: Colors.black,
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.share_location,
+                            color: Colors.white,
+                          ),
+                          Icon(
+                            Icons.arrow_drop_down,
+                            color: Colors.white,
+                          )
+                        ],
+                      ),
+                    ),
+                    IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.notifications,
+                          color: Colors.white,
+                        ))
+                  ],
+                ),
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.1,

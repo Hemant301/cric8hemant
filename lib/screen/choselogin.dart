@@ -68,7 +68,7 @@ class ChooseAuth extends StatelessWidget {
                                   primary: Colors.white,
                                 ),
                                 onPressed: () {
-                                  Navigator.pushNamed(context, "/login");
+                                  Navigator.pushNamed(context, "/signin");
                                 },
                                 child: const Text(
                                   "Let's get started",
@@ -85,7 +85,7 @@ class ChooseAuth extends StatelessWidget {
                 children: [
                   const Text(
                     "Already a Plaholic? ",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                   ),
                   TextButton(
                       onPressed: () {
@@ -94,7 +94,11 @@ class ChooseAuth extends StatelessWidget {
                       child: const Text(
                         "Signin",
                         style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                          decoration: TextDecoration.underline,
+                        ),
                       )),
                 ],
               ),
