@@ -8,6 +8,7 @@ class LearnPage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
           body: Stack(
+        alignment: Alignment.center,
         children: [
           const Align(
               alignment: Alignment.topRight,
@@ -137,6 +138,67 @@ class LearnPage extends StatelessWidget {
                                       ),
                                     )))
                       ])))),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            color: Colors.black.withOpacity(0.7),
+          ),
+          Positioned(
+            top: 180,
+            child: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white,
+                  ),
+                  height: 380,
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        // popup2.png
+                        Image.asset(
+                          "assets/popup2.png",
+                          height: 200,
+                          width: MediaQuery.of(context).size.width - 80,
+                        ),
+                        Text(
+                          "Comming Soon !!",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20),
+                        ),
+                        Text(
+                          "Stay Tune",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 149, 155, 155),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16),
+                        ),
+                        SizedBox(
+                          height: 120,
+                        )
+                      ]),
+                ),
+                Positioned(
+                  bottom: -2,
+                  left: -20,
+                  // right: 0,
+                  child: Container(
+                    width: MediaQuery.of(context).size.width - 20,
+                    child: Image.asset(
+                      "assets/popup1.png",
+                      fit: BoxFit.fill,
+                      // height: 200,
+                      // width: MediaQuery.of(context).size.width - 40,
+                    ),
+                  ),
+                )
+              ],
+            ),
+          )
         ],
       )),
     );
