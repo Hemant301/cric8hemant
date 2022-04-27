@@ -75,6 +75,7 @@ class HomePage extends StatelessWidget {
                       InkWell(
                         onTap: () {
                           // logout();
+                          Navigator.pushNamed(context, "/PopUp");
                         },
                         child: Row(
                           children: const [

@@ -85,36 +85,36 @@ class _SignupState extends State<Signup> {
                                 Icons.person,
                                 color: Colors.black,
                               ),
-                              labelText: "First Name"),
+                              labelText: "Full Name"),
                         ),
-                        TextFormField(
-                          controller: lastNameController,
-                          decoration: const InputDecoration(
-                              icon: Icon(
-                                Icons.person,
-                                color: Colors.black,
-                              ),
-                              labelText: "Last Name"),
-                        ),
-                        TextFormField(
-                          controller: usernameController,
-                          decoration: const InputDecoration(
-                              icon: Icon(
-                                Icons.person,
-                                color: Colors.black,
-                              ),
-                              labelText: "User Name"),
-                        ),
-                        TextFormField(
-                          keyboardType: TextInputType.phone,
-                          controller: mobController,
-                          decoration: const InputDecoration(
-                              icon: Icon(
-                                Icons.email,
-                                color: Colors.black,
-                              ),
-                              labelText: "Mobile No."),
-                        ),
+                        // TextFormField(
+                        //   controller: lastNameController,
+                        //   decoration: const InputDecoration(
+                        //       icon: Icon(
+                        //         Icons.person,
+                        //         color: Colors.black,
+                        //       ),
+                        //       labelText: "Last Name"),
+                        // ),
+                        // TextFormField(
+                        //   controller: usernameController,
+                        //   decoration: const InputDecoration(
+                        //       icon: Icon(
+                        //         Icons.person,
+                        //         color: Colors.black,
+                        //       ),
+                        //       labelText: "User Name"),
+                        // ),
+                        // TextFormField(
+                        //   keyboardType: TextInputType.phone,
+                        //   controller: mobController,
+                        //   decoration: const InputDecoration(
+                        //       icon: Icon(
+                        //         Icons.email,
+                        //         color: Colors.black,
+                        //       ),
+                        //       labelText: "Mobile No."),
+                        // ),
                         TextFormField(
                           controller: emailController,
                           decoration: const InputDecoration(
@@ -124,34 +124,34 @@ class _SignupState extends State<Signup> {
                               ),
                               labelText: "Email id"),
                         ),
-                        TextFormField(
-                          controller: cityController,
-                          decoration: const InputDecoration(
-                              icon: Icon(
-                                Icons.location_city,
-                                color: Colors.black,
-                              ),
-                              labelText: "City"),
-                        ),
-                        TextFormField(
-                          controller: stateController,
-                          decoration: const InputDecoration(
-                              icon: Icon(
-                                Icons.location_on_outlined,
-                                color: Colors.black,
-                              ),
-                              labelText: "State"),
-                        ),
-                        TextFormField(
-                          keyboardType: TextInputType.phone,
-                          controller: pincodeController,
-                          decoration: const InputDecoration(
-                              icon: Icon(
-                                Icons.pin,
-                                color: Colors.black,
-                              ),
-                              labelText: "Pin Code"),
-                        ),
+                        // TextFormField(
+                        //   controller: cityController,
+                        //   decoration: const InputDecoration(
+                        //       icon: Icon(
+                        //         Icons.location_city,
+                        //         color: Colors.black,
+                        //       ),
+                        //       labelText: "City"),
+                        // ),
+                        // TextFormField(
+                        //   controller: stateController,
+                        //   decoration: const InputDecoration(
+                        //       icon: Icon(
+                        //         Icons.location_on_outlined,
+                        //         color: Colors.black,
+                        //       ),
+                        //       labelText: "State"),
+                        // ),
+                        // TextFormField(
+                        //   keyboardType: TextInputType.phone,
+                        //   controller: pincodeController,
+                        //   decoration: const InputDecoration(
+                        //       icon: Icon(
+                        //         Icons.pin,
+                        //         color: Colors.black,
+                        //       ),
+                        //       labelText: "Pin Code"),
+                        // ),
                         TextFormField(
                           controller: passwordController1,
                           decoration: const InputDecoration(
