@@ -39,13 +39,13 @@ class _BootState extends State<Boot> {
               'Home',
               style: TextStyle(color: Colors.white),
             ),
-            activeColor: Color.fromARGB(255, 24, 255, 220),
+            activeColor: Color.fromARGB(255, 109, 255, 182),
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
             icon: Icon(Icons.wc, color: Colors.white),
             title: Text('Meet', style: TextStyle(color: Colors.white)),
-            activeColor: Color.fromARGB(255, 24, 255, 220),
+            activeColor: Color.fromARGB(255, 137, 255, 196),
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
