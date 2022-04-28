@@ -73,6 +73,7 @@ class ChooseAuth extends StatelessWidget {
                                 child: const Text(
                                   "Let's get started",
                                   style: TextStyle(
+                                      // fontFamily: font,
                                       color: Color.fromARGB(255, 61, 57, 57)),
                                 )),
                           ),
@@ -85,7 +86,7 @@ class ChooseAuth extends StatelessWidget {
                 children: [
                   const Text(
                     "Already a Plaholic? ",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
                   ),
                   TextButton(
                       onPressed: () {
@@ -94,6 +95,7 @@ class ChooseAuth extends StatelessWidget {
                       child: const Text(
                         "Signin",
                         style: TextStyle(
+                          // fontFamily:font ,
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -109,20 +111,62 @@ class ChooseAuth extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 child: Container(
                   height: 40,
-                  width: 150,
+                  width: MediaQuery.of(context).size.width - 50,
                   color: Colors.white,
-                  child: TextButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, "/boot");
-                      },
-                      child: const Text(
-                        "Skip for Now",
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.bold),
-                      )),
+                  child: Row(
+                    // mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(width: 15),
+                      Image.asset(
+                        "assets/download__1_-removebg-preview.png",
+                        height: 30,
+                        width: 30,
+                      ),
+                      SizedBox(width: 50),
+                      TextButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, "/boot");
+                          },
+                          child: const Text(
+                            "Sign in with Google",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold),
+                          )),
+                    ],
+                  ),
                 ),
-              )
+              ),
+              const SizedBox(
+                height: 20,
+              ),
             ],
+          ),
+        ),
+        Positioned(
+          bottom: 50,
+          right: 0,
+          left: 0,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: Center(
+              child: Container(
+                height: 35,
+                width: 150,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)),
+                child: TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, "/boot");
+                    },
+                    child: const Text(
+                      "Skip for Now",
+                      style: TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.bold),
+                    )),
+              ),
+            ),
           ),
         ),
       ],
