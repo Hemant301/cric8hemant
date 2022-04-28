@@ -5,6 +5,7 @@ import 'package:cric8hemant/screen/bottombar.dart';
 import 'package:cric8hemant/screen/choselogin.dart';
 import 'package:cric8hemant/screen/home.dart';
 import 'package:cric8hemant/screen/popup.dart';
+import 'package:cric8hemant/screen/referearn.dart';
 import 'package:cric8hemant/screen/splashascreen.dart';
 import 'package:flutter/material.dart';
 
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         "/bottombar": (context) => Nav(),
         "/boot": (context) => Boot(),
         "/PopUp": (context) => PopUp(),
+        "/referearn": (context) => Referearn(),
       },
     );
   }

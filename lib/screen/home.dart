@@ -20,38 +20,41 @@ class HomePage extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    // const Padding(
-                    //   padding: EdgeInsets.only(left: 8),
-                    //   child: Text("Crick8inNet"),
-                    // ),
-                    Container(
-                      padding: EdgeInsets.all(4),
-                      decoration: BoxDecoration(
-                          color: Colors.black,
-                          borderRadius: BorderRadius.circular(10)),
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.share_location,
-                            color: Colors.white,
-                          ),
-                          Icon(
-                            Icons.arrow_drop_down,
-                            color: Colors.white,
-                          )
-                        ],
+                child: InkWell(
+                  onTap: () {},
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      // const Padding(
+                      //   padding: EdgeInsets.only(left: 8),
+                      //   child: Text("Crick8inNet"),
+                      // ),
+                      Container(
+                        padding: EdgeInsets.all(4),
+                        decoration: BoxDecoration(
+                            color: Colors.black,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.share_location,
+                              color: Colors.white,
+                            ),
+                            Icon(
+                              Icons.arrow_drop_down,
+                              color: Colors.white,
+                            )
+                          ],
+                        ),
                       ),
-                    ),
-                    IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.notifications,
-                          color: Colors.white,
-                        ))
-                  ],
+                      IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.notifications,
+                            color: Colors.white,
+                          ))
+                    ],
+                  ),
                 ),
               ),
               SizedBox(
