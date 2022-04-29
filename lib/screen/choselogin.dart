@@ -86,7 +86,7 @@ class ChooseAuth extends StatelessWidget {
                 children: [
                   const Text(
                     "Already a Plaholic? ",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14,),
                   ),
                   TextButton(
                       onPressed: () {

@@ -199,6 +199,9 @@ class HomePage extends StatelessWidget {
                               Cont(
                                 title1: "Refer & Earn",
                                 icon: Icons.share,
+                                onTap: () {
+                                  Navigator.pushNamed(context, '/referearn');
+                                },
                               )
                             ],
                           ),
@@ -367,42 +370,46 @@ class HomePage extends StatelessWidget {
 //   }
 // }
 class Cont extends StatelessWidget {
-  Cont({Key? key, this.icon, this.title = "", this.title1 = ""})
+  Cont({Key? key, this.icon, this.title = "", this.title1 = "", this.onTap})
       : super(key: key);
   String title;
   IconData? icon;
   String title1;
+  Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(5.0),
-      child: Container(
-          padding: EdgeInsets.all(5),
-          decoration: BoxDecoration(
-              border: Border.all(color: Colors.white),
-              borderRadius: BorderRadius.circular(8)),
-          child: Row(
-            children: [
-              Icon(icon!, size: 15, color: Colors.white),
-              SizedBox(
-                width: 4,
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(title,
-                      style: TextStyle(fontSize: 8, color: Colors.white)),
-                  Text(title1,
-                      style: TextStyle(
-                          fontSize: 10,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold)),
-                ],
-              )
-            ],
-          )),
+      child: InkWell(
+        onTap: onTap,
+        child: Container(
+            padding: EdgeInsets.all(5),
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.white),
+                borderRadius: BorderRadius.circular(8)),
+            child: Row(
+              children: [
+                Icon(icon!, size: 15, color: Colors.white),
+                SizedBox(
+                  width: 4,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(title,
+                        style: TextStyle(fontSize: 8, color: Colors.white)),
+                    Text(title1,
+                        style: TextStyle(
+                            fontSize: 10,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold)),
+                  ],
+                )
+              ],
+            )),
+      ),
     );
   }
 }

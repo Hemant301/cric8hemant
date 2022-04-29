@@ -21,82 +21,92 @@ class BookPage extends StatelessWidget {
                     padding: const EdgeInsets.only(bottom: 50),
                     child: Column(
                       children: [
-                        Align(
-                          alignment: Alignment.topRight,
-                          child: Stack(
-                            children: const [
-                              Align(
-                                  alignment: Alignment.topRight,
-                                  child: Image(
-                                      image: AssetImage('assets/meetbg.png'))),
-                              Padding(
-                                padding: EdgeInsets.all(12.0),
-                                child: Align(
-                                  alignment: Alignment.topRight,
-                                  child: Icon(
-                                    Icons.notifications,
-                                    color: Colors.black,
+                        Stack(
+                          children: [
+                            Align(
+                                alignment: Alignment.topRight,
+                                child: Image(
+                                  image: AssetImage(
+                                    'assets/meetbg.png',
                                   ),
+                                )),
+                            Padding(
+                              padding: EdgeInsets.all(12.0),
+                              child: Align(
+                                alignment: Alignment.topRight,
+                                child: Icon(
+                                  Icons.notifications,
+                                  color: Colors.black,
                                 ),
                               ),
-                            ],
-                          ),
-                        ),
-                        const Align(
-                          alignment: Alignment.topLeft,
-                          child: Text(
-                            "  Book &",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 40),
-                          ),
-                        ),
-                        const Align(
-                            alignment: Alignment.topLeft,
-                            child: Text(
-                              "   Venues",
-                              style: TextStyle(fontSize: 35),
-                            )),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        Container(
-                          height: 40,
-                          width: MediaQuery.of(context).size.width - 40,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              border:
-                                  Border.all(color: Colors.black, width: 2)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: Text("search venues here"),
-                          ),
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Align(
-                              alignment: Alignment.centerRight,
-                              child: Text(
-                                "Find & Book venues nearby",
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              )),
-                        ),
-
-                        Row(
-                          children: [
-                            contaItem(
-                              icon: Icons.discount,
-                              title: "Favorites",
                             ),
-                            contaItem(
-                              icon: Icons.favorite,
-                              title: "Offer",
+                            Padding(
+                              padding: const EdgeInsets.only(top: 40),
+                              child: Column(
+                                children: [
+                                  const Align(
+                                    alignment: Alignment.topLeft,
+                                    child: Text(
+                                      "  Book &",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 40),
+                                    ),
+                                  ),
+                                  const Align(
+                                      alignment: Alignment.topLeft,
+                                      child: Text(
+                                        "   Venues",
+                                        style: TextStyle(fontSize: 35),
+                                      )),
+                                  const SizedBox(
+                                    height: 8,
+                                  ),
+                                  Container(
+                                    height: 40,
+                                    width:
+                                        MediaQuery.of(context).size.width - 40,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        border: Border.all(
+                                            color: Colors.black, width: 2)),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(10),
+                                      child: Text("search venues here"),
+                                    ),
+                                  ),
+                                  const Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Align(
+                                        alignment: Alignment.centerRight,
+                                        child: Text(
+                                          "Find & Book venues nearby",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        )),
+                                  ),
+                                  Row(
+                                    children: [
+                                      contaItem(
+                                        icon: Icons.discount,
+                                        title: "Favorites",
+                                      ),
+                                      contaItem(
+                                        icon: Icons.favorite,
+                                        title: "Offer",
+                                      ),
+                                      contaItem(
+                                        icon: Icons.quick_contacts_dialer,
+                                        title: "Quick Book",
+                                      )
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
-                            contaItem(
-                              icon: Icons.quick_contacts_dialer,
-                              title: "Quick Book",
-                            )
                           ],
                         ),
+
                         // const Padding(
                         //   padding: EdgeInsets.only(left: 8),
                         //   child: Align(
@@ -147,8 +157,8 @@ class BookPage extends StatelessWidget {
                                               ),
                                             ),
                                             Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
+                                              padding: const EdgeInsets.only(
+                                                  left: 8),
                                               child: Column(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.start,
@@ -158,10 +168,9 @@ class BookPage extends StatelessWidget {
                                                   Container(
                                                       width:
                                                           MediaQuery.of(context)
-                                                                      .size
-                                                                      .width /
-                                                                  2 -
-                                                              40,
+                                                                  .size
+                                                                  .width /
+                                                              3,
                                                       child: Text(
                                                         snapshot
                                                             .data!
@@ -191,7 +200,12 @@ class BookPage extends StatelessWidget {
                                                         color: Color.fromARGB(
                                                             255, 255, 230, 0),
                                                       ),
-                                                      Text("0.0(0 reating)"),
+                                                      Text(
+                                                        "0.0(0 reating)",
+                                                        style: TextStyle(
+                                                            color: Colors
+                                                                .grey[600]),
+                                                      ),
                                                     ],
                                                   ),
                                                 ],
@@ -201,9 +215,9 @@ class BookPage extends StatelessWidget {
                                             //   width: 5,
                                             // ),
                                             Container(
-                                              // padding: EdgeInsets.all(20),
-                                              height: 80,
-                                              width: 80,
+                                              // padding: EdgeInsets.all(15),
+                                              height: 90,
+                                              width: 90,
                                               decoration: BoxDecoration(
                                                 color: Color.fromARGB(
                                                     255, 5, 3, 3),

@@ -23,9 +23,13 @@ class _LoginScreenState extends State<LoginScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const Image(image: AssetImage('assets/login.png')),
+              const Image(
+                image: AssetImage(
+                  'assets/login.png',
+                ),
+              ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.02,
+                height: MediaQuery.of(context).size.height * 0.01,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -50,9 +54,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ],
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.01,
-              ),
+              // SizedBox(
+              //   height: MediaQuery.of(context).size.height * 0.01,
+              // ),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.9,
                 child: Column(
@@ -79,7 +83,22 @@ class _LoginScreenState extends State<LoginScreen> {
                       controller: passwordController,
                     ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.03,
+                      height: 10,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, "/forget");
+                      },
+                      child: Align(
+                        alignment: Alignment.bottomRight,
+                        child: Text(
+                          "forget password",
+                          textAlign: TextAlign.end,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
                     ),
                     SizedBox(
                       width: double.infinity,

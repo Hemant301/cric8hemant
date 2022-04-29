@@ -3,6 +3,7 @@ import 'package:cric8hemant/screen/book.dart';
 import 'package:cric8hemant/screen/home.dart';
 import 'package:cric8hemant/screen/learn.dart';
 import 'package:cric8hemant/screen/meet.dart';
+import 'package:cric8hemant/screen/myprofile.dart';
 import 'package:cric8hemant/screen/profile.dart';
 import 'package:flutter/material.dart';
 
@@ -87,7 +88,7 @@ class _BootState extends State<Boot> {
       case 3:
         return BookPage();
       case 4:
-        return Profile();
+        return MyProfile();
 
       case 0:
 
