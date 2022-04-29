@@ -1,3 +1,4 @@
+import 'package:cric8hemant/const/user_cred.dart';
 import 'package:cric8hemant/util/const.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -98,27 +99,52 @@ class HomePage extends StatelessWidget {
                           color: Colors.white,
                         ),
                       ),
-                      InkWell(
-                        onTap: () {
-                          // logout();
-                          Navigator.pushNamed(context, "/PopUp");
-                        },
-                        child: Row(
-                          children: const [
-                            Text(
-                              "Logout",
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            SizedBox(
-                              width: 8,
-                            ),
-                            Icon(
-                              Icons.logout,
-                              color: Colors.white,
-                            ),
-                          ],
-                        ),
-                      )
+                      userCred.isUserLogin()
+                          ? InkWell(
+                              onTap: () {
+                                // logout();
+                                userCred.logoutUser();
+                                Navigator.pushReplacementNamed(
+                                    context, "/login");
+                              },
+                              child: Row(
+                                children: const [
+                                  Text(
+                                    "Logout",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                  SizedBox(
+                                    width: 8,
+                                  ),
+                                  Icon(
+                                    Icons.logout,
+                                    color: Colors.white,
+                                  ),
+                                ],
+                              ),
+                            )
+                          : InkWell(
+                              onTap: () {
+                                // logout();
+                                // userCred.logoutUser();
+                                // Navigator.pushReplacementNamed(context, "/login");
+                              },
+                              child: Row(
+                                children: const [
+                                  Text(
+                                    "Login",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                  SizedBox(
+                                    width: 8,
+                                  ),
+                                  Icon(
+                                    Icons.login,
+                                    color: Colors.white,
+                                  ),
+                                ],
+                              ),
+                            )
                     ],
                   ),
                 ),

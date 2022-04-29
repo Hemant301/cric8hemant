@@ -1,4 +1,5 @@
 import 'package:cric8hemant/api/authapi.dart';
+import 'package:cric8hemant/const/user_cred.dart';
 import 'package:cric8hemant/util/const.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -118,6 +119,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           );
                           // print(data['status'].runtimeType);
                           if (data['status'] == 200) {
+                            userCred.addUserId(
+                                data['user_info']['user_id'].toString());
                             Fluttertoast.showToast(msg: data['message']);
                             Navigator.pushReplacementNamed(context, "/boot");
                           } else {

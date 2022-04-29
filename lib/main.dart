@@ -1,5 +1,6 @@
 import 'package:cric8hemant/auth/login.dart';
 import 'package:cric8hemant/auth/signin.dart';
+import 'package:cric8hemant/const/storage.dart';
 import 'package:cric8hemant/screen/boot.dart';
 import 'package:cric8hemant/screen/bottombar.dart';
 import 'package:cric8hemant/screen/changepwd.dart';
@@ -12,7 +13,9 @@ import 'package:cric8hemant/screen/referearn.dart';
 import 'package:cric8hemant/screen/splashascreen.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await StorageUtil.getInstance();
   runApp(const MyApp());
 }
 
