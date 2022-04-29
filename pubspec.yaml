@@ -37,6 +37,7 @@ dependencies:
   fluttertoast: ^8.0.9
   bottom_navy_bar:
   rxdart: ^0.27.3
+  sms_autofill: ^2.1.2
 
 dev_dependencies:
   flutter_test:
@@ -62,7 +63,12 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/
-    - assets/fonts/
+    - assets/font/
+
+  fonts:
+    - family: sans
+      fonts:
+        - asset: assets/font/Poppins-Black.ttf
 
   #   - images/a_dot_ham.jpeg
 
@@ -77,10 +83,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
-    - family: Poppins
-      fonts:
-        - asset: assets/fonts/Poppins-Black.ttf
+  # fonts:
+  #   - family: Poppins
+  #     fonts:
+  #       - asset: assets/fonts/Poppins-Black.ttf
         # - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

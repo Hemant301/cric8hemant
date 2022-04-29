@@ -25,24 +25,7 @@ class _ReferearnState extends State<Referearn> {
                 padding: const EdgeInsets.all(8.0),
                 child: Align(
                   alignment: Alignment.topLeft,
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Container(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black, width: 4),
-                          color: Color.fromARGB(255, 253, 253, 253),
-                          borderRadius: BorderRadius.circular(50)),
-                      child: Text(
-                        'Back',
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 0, 0, 0), fontSize: 18),
-                      ),
-                    ),
-                  ),
+                  child: BackButtonss(),
                 ),
               ),
               SizedBox(
@@ -251,6 +234,32 @@ class _ReferearnState extends State<Referearn> {
             ],
           )
         ]),
+      ),
+    );
+  }
+}
+
+class BackButtonss extends StatelessWidget {
+  const BackButtonss({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        Navigator.pop(context);
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+        decoration: BoxDecoration(
+            border: Border.all(color: Colors.black, width: 4),
+            color: Color.fromARGB(255, 253, 253, 253),
+            borderRadius: BorderRadius.circular(50)),
+        child: Text(
+          'Back',
+          style: TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontSize: 18),
+        ),
       ),
     );
   }

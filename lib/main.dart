@@ -2,7 +2,10 @@ import 'package:cric8hemant/auth/login.dart';
 import 'package:cric8hemant/auth/signin.dart';
 import 'package:cric8hemant/screen/boot.dart';
 import 'package:cric8hemant/screen/bottombar.dart';
+import 'package:cric8hemant/screen/changepwd.dart';
 import 'package:cric8hemant/screen/choselogin.dart';
+import 'package:cric8hemant/screen/forget.dart';
+import 'package:cric8hemant/screen/forgetotp.dart';
 import 'package:cric8hemant/screen/home.dart';
 import 'package:cric8hemant/screen/popup.dart';
 import 'package:cric8hemant/screen/referearn.dart';
@@ -33,6 +36,9 @@ class MyApp extends StatelessWidget {
         "/boot": (context) => Boot(),
         "/PopUp": (context) => PopUp(),
         "/referearn": (context) => Referearn(),
+        "/forget": (context) => ForgetPassword(),
+        "/forgetotp": (context) => ForgetOtp(),
+        "/changepwd": (context) => CgangePwd(),
       },
     );
   }
