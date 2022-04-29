@@ -18,7 +18,7 @@ class BookPage extends StatelessWidget {
               child: Stack(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 70),
+                    padding: const EdgeInsets.only(bottom: 50),
                     child: Column(
                       children: [
                         Align(
