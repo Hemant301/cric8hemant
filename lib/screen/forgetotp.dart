@@ -1,5 +1,6 @@
 import 'package:cric8hemant/screen/referearn.dart';
 import 'package:flutter/material.dart';
+import 'package:sms_autofill/sms_autofill.dart';
 
 class ForgetOtp extends StatelessWidget {
   const ForgetOtp({Key? key}) : super(key: key);
@@ -53,14 +54,26 @@ class ForgetOtp extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: TextFormField(
-                decoration: const InputDecoration(
-                    icon: Icon(
-                      Icons.call,
+              child: Container(
+                child: PinInputTextField(
+                  // controller: otpCon,
+                  pinLength: 5,
+                  cursor: Cursor(
+                    width: 2,
+                    height: 30,
+                    color: Colors.grey,
+                    enabled: true,
+                  ),
+                  decoration: UnderlineDecoration(
+                    colorBuilder: FixedColorBuilder(Colors.grey),
+                    lineHeight: 1.0,
+                    textStyle: TextStyle(
+                      fontFamily: 'Roboto',
+                      fontSize: 22,
                       color: Colors.black,
                     ),
-                    labelText: "Mobile"),
-                // controller: usernameController,
+                  ),
+                ),
               ),
             ),
             const SizedBox(
@@ -69,7 +82,7 @@ class ForgetOtp extends StatelessWidget {
             Center(
               child: InkWell(
                 onTap: () {
-                  Navigator.pushNamed(context, "/forgetotp");
+                  Navigator.pushNamed(context, "/setpassword");
                 },
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),

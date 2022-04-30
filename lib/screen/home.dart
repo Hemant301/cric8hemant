@@ -168,69 +168,65 @@ class HomePage extends StatelessWidget {
                         height: 10,
                       ),
                       Padding(
-                        padding:
-                            const EdgeInsets.only(top: 20, left: 15, right: 15),
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Cont(
-                                title: "My",
-                                title1: "calender",
-                                icon: Icons.calendar_month_sharp,
-                              ),
-                              Cont(
-                                title: "My",
-                                title1: "calender",
-                                icon: Icons.book_online_outlined,
-                              ),
-                              Cont(
-                                title: "My",
-                                title1: "calender",
-                                icon: Icons.abc_outlined,
-                              ),
-                              Cont(
-                                title: "My",
-                                title1: "calender",
-                                icon: Icons.abc_outlined,
-                              )
-                              // Slid(
-                              //   title: "My Calender",
-                              //   icon: Icons.calendar_month,
-                              // ),
-                            ],
-                          ),
+                        padding: const EdgeInsets.only(
+                            left: 4.0, right: 4.0, top: 16, bottom: 2),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Cont(
+                              title: "My",
+                              title1: "calender",
+                              icon: Icons.calendar_month_sharp,
+                            ),
+                            Cont(
+                              title: "Create",
+                              title1: "Activity",
+                              icon: Icons.book_online_outlined,
+                            ),
+                            Cont(
+                              title: "Quick",
+                              title1: "Book",
+                              icon: Icons.abc_outlined,
+                            ),
+                            Cont(
+                              title: "Favourite",
+                              title1: "Venue",
+                              icon: Icons.favorite,
+                            )
+                            // Slid(
+                            //   title: "My Calender",
+                            //   icon: Icons.calendar_month,
+                            // ),
+                          ],
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Cont(
-                                title1: "Groups",
-                                icon: Icons.groups_sharp,
-                              ),
-                              Cont(
-                                title1: "Board",
-                                icon: Icons.stacked_bar_chart_rounded,
-                              ),
-                              Cont(
-                                title1: "Offers",
-                                icon: Icons.discount_outlined,
-                              ),
-                              Cont(
-                                title1: "Refer & Earn",
-                                icon: Icons.share,
-                                onTap: () {
-                                  Navigator.pushNamed(context, '/referearn');
-                                },
-                              )
-                            ],
-                          ),
+                        padding: const EdgeInsets.all(2.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Cont(
+                              title1: "Groups",
+                              icon: Icons.groups_sharp,
+                            ),
+                            Cont(
+                              title: 'Leader',
+                              title1: "Board",
+                              icon: Icons.stacked_bar_chart_rounded,
+                            ),
+                            Cont(
+                              title1: "Offers",
+                              icon: Icons.discount_outlined,
+                            ),
+                            Cont(
+                              title: 'Refer',
+                              title1: "& Earn",
+                              icon: Icons.share,
+                              onTap: () {
+                                Navigator.pushNamed(context, '/referearn');
+                              },
+                            )
+                          ],
                         ),
                       ),
                     ],
@@ -411,6 +407,7 @@ class Cont extends StatelessWidget {
         onTap: onTap,
         child: Container(
             padding: EdgeInsets.all(5),
+            width: 75,
             decoration: BoxDecoration(
                 border: Border.all(color: Colors.white),
                 borderRadius: BorderRadius.circular(8)),
