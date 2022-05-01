@@ -19,4 +19,62 @@ class HomeApi {
       // print(e);
     } finally {}
   }
+
+  Future<dynamic> forgotPass(String phone) async {
+    var client = http.Client();
+    try {
+      final response = await client
+          .post(Uri.parse("${baseUrl}api/Users/forgotpassword"), body: {
+        'mobile': phone,
+      });
+      if (response.statusCode == 200) {
+        print(response.body);
+        return jsonDecode(response.body) as Map;
+      } else {
+        print('Request failed with status: ${response.statusCode}.');
+      }
+    } catch (e) {
+      print(e);
+    } finally {
+      client.close();
+    }
+  }
+
+  Future<dynamic> verifyOtp(String phone, String otp) async {
+    var client = http.Client();
+    try {
+      final response = await client.post(
+          Uri.parse("${baseUrl}api/Users/verify_otp"),
+          body: {'mobile': phone, 'otp': otp});
+      if (response.statusCode == 200) {
+        print(response.body);
+        return jsonDecode(response.body) as Map;
+      } else {
+        print('Request failed with status: ${response.statusCode}.');
+      }
+    } catch (e) {
+      print(e);
+    } finally {
+      client.close();
+    }
+  }
+
+  Future<dynamic> resetpassword(String phone, String password) async {
+    var client = http.Client();
+    try {
+      final response = await client.post(
+          Uri.parse("${baseUrl}api/Users/reset_password"),
+          body: {'mobile': phone, 'password': password});
+      if (response.statusCode == 200) {
+        print(response.body);
+        return jsonDecode(response.body) as Map;
+      } else {
+        print('Request failed with status: ${response.statusCode}.');
+      }
+    } catch (e) {
+      print(e);
+    } finally {
+      client.close();
+    }
+  }
 }
