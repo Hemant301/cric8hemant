@@ -67,30 +67,47 @@ class HomePage extends StatelessWidget {
                   color: Colors.black,
                   child: Row(
                     children: [
-                      IconButton(
-                          iconSize: 50,
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.person_rounded,
-                            color: Colors.white,
-                          )),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Colors.white,
+                              ),
+                              shape: BoxShape.circle),
+                          child: IconButton(
+                              iconSize: 25,
+                              onPressed: () {},
+                              icon: const Icon(
+                                Icons.person_rounded,
+                                color: Colors.white,
+                              )),
+                        ),
+                      ),
                       Column(
                         children: const [
-                          Text(
-                            "Hey there",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 10),
+                            child: Text(
+                              "Hey ",
+                              style: TextStyle(
+                                  fontFamily: "semibold",
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18),
+                            ),
                           ),
-                          Text(
-                            "Warming up",
-                            style: TextStyle(color: Colors.white),
-                          )
+                          // Text(
+                          //   "Warming up",
+                          //   style: TextStyle(color: Colors.white),
+                          // )
                         ],
                       ),
+                      SizedBox(
+                        width: 40,
+                      ),
                       const SizedBox(
-                        height: 60,
+                        height: 30,
                         child: VerticalDivider(
                           thickness: 2,
                           indent: 5,
@@ -132,16 +149,16 @@ class HomePage extends StatelessWidget {
                               child: Row(
                                 children: const [
                                   Text(
-                                    "Login",
+                                    "Login !!",
                                     style: TextStyle(color: Colors.white),
                                   ),
-                                  SizedBox(
-                                    width: 8,
-                                  ),
-                                  Icon(
-                                    Icons.login,
-                                    color: Colors.white,
-                                  ),
+                                  // SizedBox(
+                                  //   width: 8,
+                                  // ),
+                                  // Icon(
+                                  //   Icons.login,
+                                  //   color: Colors.white,
+                                  // ),
                                 ],
                               ),
                             )
@@ -154,7 +171,7 @@ class HomePage extends StatelessWidget {
           Align(
             alignment: Alignment.bottomCenter,
             child: SizedBox(
-              width: double.maxFinite,
+              width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height / 2 + 15,
               child: Card(
                   color: Colors.black,
@@ -168,70 +185,65 @@ class HomePage extends StatelessWidget {
                         height: 10,
                       ),
                       Padding(
-                        padding:
-                            const EdgeInsets.only(top: 20, left: 15, right: 15),
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Cont(
-                                title: "My",
-                                title1: "calender",
-                                icon: Icons.calendar_month_sharp,
-                              ),
-                              Cont(
-                                title: "My",
-                                title1: "calender",
-                                icon: Icons.book_online_outlined,
-                              ),
-                              Cont(
-                                title: "My",
-                                title1: "calender",
-                                icon: Icons.abc_outlined,
-                              ),
-                              Cont(
-                                title: "My",
-                                title1: "calender",
-                                icon: Icons.abc_outlined,
-                              )
-                              // Slid(
-                              //   title: "My Calender",
-                              //   icon: Icons.calendar_month,
-                              // ),
-                            ],
-                          ),
+                        padding: const EdgeInsets.only(
+                            left: 4.0, right: 4.0, top: 16, bottom: 2),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Cont(
+                              title: "My",
+                              title1: "calender",
+                              icon: Icons.calendar_month_sharp,
+                            ),
+                            Cont(
+                              title: "Create",
+                              title1: "Activity",
+                              icon: Icons.book_online_outlined,
+                            ),
+                            Cont(
+                              title: "Quick",
+                              title1: "Book",
+                              icon: Icons.abc_outlined,
+                            ),
+                            Cont(
+                              title: "Favourite",
+                              title1: "Venue",
+                              icon: Icons.favorite,
+                            )
+                            // Slid(
+                            //   title: "My Calender",
+                            //   icon: Icons.calendar_month,
+                            // ),
+                          ],
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
-                        child: SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Cont(
-                                title1: "Groups",
-                                icon: Icons.groups_sharp,
-                              ),
-                              Cont(
-                                title1: "Board",
-                                icon: Icons.stacked_bar_chart_rounded,
-                              ),
-                              Cont(
-                                title1: "Offers",
-                                icon: Icons.discount_outlined,
-                              ),
-                              Cont(
-                                title: "Refer",
-                                title1: "& Earn",
-                                icon: Icons.share,
-                                onTap: () {
-                                  Navigator.pushNamed(context, '/referearn');
-                                },
-                              )
-                            ],
-                          ),
+                        padding: const EdgeInsets.all(2.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Cont(
+                              title1: "Groups",
+                              icon: Icons.groups_sharp,
+                            ),
+                            Cont(
+                              title: 'Leader',
+                              title1: "Board",
+                              icon: Icons.stacked_bar_chart_rounded,
+                            ),
+                            Cont(
+                              title1: "Offers",
+                              icon: Icons.discount_outlined,
+                            ),
+                            Cont(
+                              title: 'Refer',
+                              title1: "& Earn",
+                              icon: Icons.share,
+                              onTap: () {
+                                Navigator.pushNamed(context, '/referearn');
+                              },
+                            )
+                          ],
                         ),
                       ),
                     ],
@@ -342,7 +354,8 @@ class HomePage extends StatelessWidget {
                                   Text(
                                     "LEARN",
                                     style: TextStyle(
-                                        fontWeight: FontWeight.bold,
+                                        fontFamily: "sans",
+                                        // fontWeight: FontWeight.bold,
                                         fontSize: 18),
                                   ),
                                 ],
@@ -411,8 +424,9 @@ class Cont extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: Container(
-            width: 70,
+            // width: 70,
             padding: EdgeInsets.all(5),
+            width: 75,
             decoration: BoxDecoration(
                 border: Border.all(color: Colors.white),
                 borderRadius: BorderRadius.circular(8)),

@@ -10,6 +10,7 @@ import 'package:cric8hemant/screen/forgetotp.dart';
 import 'package:cric8hemant/screen/home.dart';
 import 'package:cric8hemant/screen/popup.dart';
 import 'package:cric8hemant/screen/referearn.dart';
+import 'package:cric8hemant/screen/setpassword.dart';
 import 'package:cric8hemant/screen/splashascreen.dart';
 import 'package:flutter/material.dart';
 
@@ -42,6 +43,7 @@ class MyApp extends StatelessWidget {
         "/forget": (context) => ForgetPassword(),
         "/forgetotp": (context) => ForgetOtp(),
         "/changepwd": (context) => CgangePwd(),
+        "/setpassword": (context) => Setpassword(),
       },
     );
   }

@@ -69,9 +69,17 @@ flutter:
     - assets/font/
 
   fonts:
-    - family: sans
+    - family: bolds
       fonts:
         - asset: assets/font/Poppins-Black.ttf
+
+    - family: semibold
+      fonts:
+        - asset: assets/font/Poppins-SemiBold.ttf
+  # fonts:
+  #   - family: sans
+  #     fonts:
+  #       - asset: assets/font/Poppins-Black.ttf
 
   #   - images/a_dot_ham.jpeg
 
@@ -90,7 +98,7 @@ flutter:
   #   - family: Poppins
   #     fonts:
   #       - asset: assets/fonts/Poppins-Black.ttf
-        # - asset: fonts/Schyler-Italic.ttf
+  # - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:
