@@ -1,9 +1,17 @@
+import 'package:cric8hemant/auth/homeapi.dart';
 import 'package:cric8hemant/screen/referearn.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
-class ForgetPassword extends StatelessWidget {
+class ForgetPassword extends StatefulWidget {
   const ForgetPassword({Key? key}) : super(key: key);
 
+  @override
+  State<ForgetPassword> createState() => _ForgetPasswordState();
+}
+
+class _ForgetPasswordState extends State<ForgetPassword> {
+  TextEditingController mobileController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,6 +62,7 @@ class ForgetPassword extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: TextFormField(
+                controller: mobileController,
                 decoration: const InputDecoration(
                     icon: Icon(
                       Icons.call,
@@ -68,8 +77,21 @@ class ForgetPassword extends StatelessWidget {
             ),
             Center(
               child: InkWell(
-                onTap: () {
-                  Navigator.pushNamed(context, "/forgetotp");
+                onTap: () async {
+                  if (mobileController.text == "") {
+                    Fluttertoast.showToast(msg: 'Enter phone number');
+                    return;
+                  }
+                  HomeApi _api = HomeApi();
+                  Map data = await _api.forgotPass(mobileController.text);
+                  print(data);
+                  if (data['status'] == 200) {
+                    Navigator.pushNamed(context, "/forgetotp",
+                        arguments: {'mobile': mobileController.text});
+                    Fluttertoast.showToast(msg: 'Otp Sent');
+                  } else {
+                    Fluttertoast.showToast(msg: 'Something went wrong');
+                  }
                 },
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),

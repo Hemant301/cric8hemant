@@ -93,7 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Align(
                         alignment: Alignment.bottomRight,
                         child: Text(
-                          "forget password",
+                          "Forgot password",
                           textAlign: TextAlign.end,
                         ),
                       ),
