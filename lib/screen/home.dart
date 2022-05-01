@@ -255,7 +255,7 @@ class HomePage extends StatelessWidget {
             child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: SizedBox(
-                width: double.maxFinite,
+                width: MediaQuery.of(context).size.width,
                 // height: MediaQuery.of(context).size.height * 0.37,
                 child: Card(
                     color: Colors.white,
@@ -316,7 +316,7 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(0.0),
                           child: GestureDetector(
                             onTap: () {
                               //
