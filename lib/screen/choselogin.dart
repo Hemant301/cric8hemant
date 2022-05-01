@@ -58,7 +58,7 @@ class ChooseAuth extends StatelessWidget {
                               child: Image(
                                 height: 80,
                                 width: 200,
-                                image: AssetImage('assets/mycricket.png'),
+                                image: AssetImage('assets/120g.png'),
                               )),
                           SizedBox(
                             width: MediaQuery.of(context).size.width * 0.75,
@@ -73,8 +73,9 @@ class ChooseAuth extends StatelessWidget {
                                 child: const Text(
                                   "Let's get started",
                                   style: TextStyle(
-                                      // fontFamily: font,
-                                      color: Color.fromARGB(255, 61, 57, 57)),
+                                      fontSize: 11,
+                                      fontFamily: "semibold",
+                                      color: Color(0xff686868)),
                                 )),
                           ),
                         ],
@@ -87,6 +88,7 @@ class ChooseAuth extends StatelessWidget {
                   const Text(
                     "Already a Plaholic? ",
                     style: TextStyle(
+                      fontFamily: "semibold",
                       fontWeight: FontWeight.bold,
                       fontSize: 14,
                     ),
@@ -98,6 +100,7 @@ class ChooseAuth extends StatelessWidget {
                       child: const Text(
                         "Signin",
                         style: TextStyle(
+                          fontFamily: "semibold",
                           // fontFamily:font ,
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -133,6 +136,7 @@ class ChooseAuth extends StatelessWidget {
                           child: const Text(
                             "Sign in with Google",
                             style: TextStyle(
+                                fontFamily: "semibold",
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold),
                           )),
@@ -166,7 +170,9 @@ class ChooseAuth extends StatelessWidget {
                     child: const Text(
                       "Skip for Now",
                       style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.bold),
+                          fontFamily: "semibold",
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold),
                     )),
               ),
             ),

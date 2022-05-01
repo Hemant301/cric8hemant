@@ -30,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.01,
+                height: MediaQuery.of(context).size.height * 0.03,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -68,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             Icons.email,
                             color: Colors.black,
                           ),
-                          labelText: "Email"),
+                          labelText: "Email or Mobile"),
                       controller: usernameController,
                     ),
                     const SizedBox(
@@ -102,9 +102,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 10,
                     ),
                     SizedBox(
-                      width: double.infinity,
+                      width: MediaQuery.of(context).size.width - 40,
+                      height: 38,
                       child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(primary: primaryLight),
+                        style: ElevatedButton.styleFrom(
+                          primary: Color(0xff44C894),
+                        ),
                         onPressed: () async {
                           if (usernameController.text == "" ||
                               passwordController.text == "") {
@@ -130,14 +133,23 @@ class _LoginScreenState extends State<LoginScreen> {
                         },
                         child: const Text(
                           "Login",
-                          style: TextStyle(color: Colors.black, fontSize: 12),
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontFamily: "semibold",
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text("Create an account"),
+                        const Text(
+                          "Create an account",
+                          style: TextStyle(
+                            fontFamily: "semibold",
+                          ),
+                        ),
                         TextButton(
                             onPressed: () {
                               Navigator.pushNamed(context, "/signin");
@@ -145,7 +157,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: const Text(
                               "Signup",
                               style: TextStyle(
-                                color: Colors.green,
+                                color: Color(0xff44C894),
                               ),
                             ))
                       ],

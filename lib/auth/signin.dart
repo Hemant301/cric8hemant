@@ -53,7 +53,7 @@ class _SignupState extends State<Signup> {
                     ),
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.08,
+                    height: MediaQuery.of(context).size.height * 0.02,
                   ),
                   const Padding(
                     padding: EdgeInsets.only(left: 12),
@@ -62,7 +62,9 @@ class _SignupState extends State<Signup> {
                       child: Text(
                         "Create an",
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 25),
+                            fontFamily: "bolds",
+                            fontWeight: FontWeight.bold,
+                            fontSize: 28),
                       ),
                     ),
                   ),
@@ -72,8 +74,11 @@ class _SignupState extends State<Signup> {
                         alignment: Alignment.centerLeft,
                         child: Text(
                           "Account",
-                          style: TextStyle(fontSize: 30),
+                          style: TextStyle(fontFamily: "bolds", fontSize: 30),
                         )),
+                  ),
+                  SizedBox(
+                    height: 50,
                   ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.9,
@@ -125,15 +130,15 @@ class _SignupState extends State<Signup> {
                               ),
                               labelText: "Email id"),
                         ),
-                        // TextFormField(
-                        //   controller: cityController,
-                        //   decoration: const InputDecoration(
-                        //       icon: Icon(
-                        //         Icons.location_city,
-                        //         color: Colors.black,
-                        //       ),
-                        //       labelText: "City"),
-                        // ),
+                        TextFormField(
+                          controller: cityController,
+                          decoration: const InputDecoration(
+                              icon: Icon(
+                                Icons.call,
+                                color: Colors.black,
+                              ),
+                              labelText: "Mobile"),
+                        ),
                         // TextFormField(
                         //   controller: stateController,
                         //   decoration: const InputDecoration(
