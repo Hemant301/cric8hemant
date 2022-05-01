@@ -1,7 +1,52 @@
+import 'package:cric8hemant/auth/homeapi.dart';
+import 'package:cric8hemant/bloc/homebloc.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
-class Profile extends StatelessWidget {
+class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
+
+  @override
+  State<Profile> createState() => _ProfileState();
+}
+
+class _ProfileState extends State<Profile> {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController lastnameController = TextEditingController();
+  TextEditingController mobnoController = TextEditingController();
+  TextEditingController stateController = TextEditingController();
+  TextEditingController cityController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController pincodeController = TextEditingController();
+  // TextEditingController nameController =TextEditingController();
+  // TextEditingController nameController =TextEditingController();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    homeBloc.getuserData();
+    getmyData();
+  }
+
+  getmyData() {
+    Future.delayed(Duration(seconds: 0), () {
+      homeBloc.liveUserData.listen((value) {
+        nameController.text = value.data!.name!;
+        setState(() {
+          userName = value.data!.name!;
+        });
+        lastnameController.text = value.data!.lastname!;
+        emailController.text = value.data!.email!;
+        mobnoController.text = value.data!.mobile!;
+        stateController.text = value.data!.state!;
+        cityController.text = value.data!.city!;
+        pincodeController.text = value.data!.pincode!;
+        // nameController.text = value.data!.name!;
+      });
+    });
+  }
+
+  String userName = 'user';
 
   @override
   Widget build(BuildContext context) {
@@ -111,7 +156,7 @@ class Profile extends StatelessWidget {
                     height: 20,
                   ),
                   Text(
-                    "Zara Kumari",
+                    "$userName",
                     style: TextStyle(
                         color: Color.fromARGB(255, 247, 250, 250),
                         fontWeight: FontWeight.bold,
@@ -129,23 +174,27 @@ class Profile extends StatelessWidget {
                   ),
                   Textfild(
                     hints: "First Name",
+                    controller: nameController,
                   ),
                   SizedBox(
                     height: 5,
                   ),
-                  Textfild(
-                    hints: "Middel Name",
-                    // lable: "Middle Name",
-                  ),
+                  // Textfild(
+                  //   hints: "Middel Name",
+                  //   // lable: "Middle Name",
+                  // ),
                   SizedBox(
                     height: 5,
                   ),
                   Textfild(
                     hints: "Last Name",
+                    controller: lastnameController,
+
                     // lable: "Last Name",
                   ),
                   Textfild(
                     hints: "Email Address",
+                    controller: emailController,
                   ),
                   SizedBox(
                     height: 5,
@@ -159,6 +208,20 @@ class Profile extends StatelessWidget {
                   ),
                   Textfild(
                     hints: "City pincode",
+                    controller: pincodeController,
+
+                    // lable: "Last Name",
+                  ),
+                  Textfild(
+                    hints: "City",
+                    controller: cityController,
+
+                    // lable: "Last Name",
+                  ),
+                  Textfild(
+                    hints: "State",
+                    controller: stateController,
+
                     // lable: "Last Name",
                   ),
                   SizedBox(
@@ -166,6 +229,8 @@ class Profile extends StatelessWidget {
                   ),
                   Textfild(
                     hints: "Mobile number",
+                    controller: mobnoController,
+
                     // lable: "Last Name",
                     suffix: Text(
                       "Verify",
@@ -228,8 +293,43 @@ class Profile extends StatelessWidget {
                     // ),
                   ),
                   SizedBox(
-                    height: 80,
-                  )
+                    height: 40,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: InkWell(
+                      onTap: () async {
+                        HomeApi _api = HomeApi();
+                        Map data = await _api.updateProfile(
+                          name: nameController.text,
+                          last_name: lastnameController.text,
+                          state: stateController.text,
+                          city: cityController.text,
+                          pincode: pincodeController.text,
+                        );
+                        print(data);
+                        if (data['status'] == 200) {
+                          setState(() {});
+                          Fluttertoast.showToast(msg: 'Success');
+                        } else {
+                          Fluttertoast.showToast(msg: 'Fail');
+                        }
+                      },
+                      child: Container(
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Color(0xff74C69D)),
+                          child: Center(
+                              child: Text(
+                            'Update Now',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ))),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 40,
+                  ),
                 ],
               ),
             ),
@@ -241,10 +341,12 @@ class Profile extends StatelessWidget {
 }
 
 class Textfild extends StatelessWidget {
-  Textfild({Key? key, this.lable, this.hints, this.suffix}) : super(key: key);
+  Textfild({Key? key, this.lable, this.hints, this.suffix, this.controller})
+      : super(key: key);
   String? lable;
   String? hints;
   Widget? suffix;
+  TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -252,6 +354,8 @@ class Textfild extends StatelessWidget {
       child: Column(
         children: [
           TextField(
+            style: TextStyle(color: Colors.white),
+            controller: controller,
             decoration: InputDecoration(
               border: InputBorder.none,
               // border: new OutlineInputBorder(
@@ -262,6 +366,12 @@ class Textfild extends StatelessWidget {
               //     color: Color.fromARGB(255, 182, 184, 184),
               //     // fontWeight: FontWeight.bold,
               //     fontSize: 14),
+              label: Text(hints!),
+              labelStyle: TextStyle(
+                color: Color.fromARGB(255, 182, 184, 184),
+                // fontWeight: FontWeight.bold,
+              ),
+
               hintText: hints,
               suffix: suffix,
               hintStyle: TextStyle(
@@ -271,8 +381,8 @@ class Textfild extends StatelessWidget {
             ),
           ),
           Divider(
-            height: 5,
-            thickness: 3,
+            height: 2,
+            thickness: 2,
             color: Colors.white,
           ),
         ],

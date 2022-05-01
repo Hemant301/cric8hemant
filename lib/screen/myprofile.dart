@@ -1,3 +1,6 @@
+import 'package:cric8hemant/bloc/homebloc.dart';
+import 'package:cric8hemant/modal/homemodal.dart';
+import 'package:cric8hemant/screen/book.dart';
 import 'package:cric8hemant/screen/referearn.dart';
 import 'package:flutter/material.dart';
 
@@ -6,6 +9,7 @@ class MyProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    homeBloc.getuserData();
     return Scaffold(
       body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -103,18 +107,23 @@ class MyProfile extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20,
-              ),
-              child: Text(
-                "Zara",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
+            StreamBuilder<UserdetailModal>(
+                stream: homeBloc.getUserdetails.stream,
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) return Container();
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                    ),
+                    child: Text(
+                      snapshot.data!.data!.name!,
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  );
+                }),
             SizedBox(
               height: 5,
             ),
@@ -137,13 +146,18 @@ class MyProfile extends StatelessWidget {
                     ),
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Center(
-                      child: Icon(
-                    Icons.edit,
-                    size: 30,
-                  )),
+                InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, "/profile");
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Center(
+                        child: Icon(
+                      Icons.edit,
+                      size: 30,
+                    )),
+                  ),
                 )
               ],
             ),
@@ -193,7 +207,7 @@ class MyProfile extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10)),
                         child: TextButton(
                             onPressed: () {
-                              Navigator.pushNamed(context, "/boot");
+                              Navigator.pushNamed(context, "/profile");
                             },
                             child: const Text(
                               "Update Now",

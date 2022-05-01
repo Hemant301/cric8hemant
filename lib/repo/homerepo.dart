@@ -10,4 +10,10 @@ class HomeRepo {
     var jsonResponse = jsonDecode(response.body) as Map;
     return VenueModal(jsonResponse);
   }
+
+  Future<UserdetailModal> getuserData() async {
+    final response = await homeApi.getuserData();
+    var jsonResponse = jsonDecode(response.body) as Map;
+    return UserdetailModal(jsonResponse);
+  }
 }

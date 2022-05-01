@@ -17,6 +17,20 @@ class HomeBloc {
       print(e);
     }
   }
+
+  final BehaviorSubject<UserdetailModal> liveUserData =
+      BehaviorSubject<UserdetailModal>();
+  BehaviorSubject<UserdetailModal> get getUserdetails => liveUserData;
+  getuserData() async {
+    try {
+      UserdetailModal homeSlider = await _homeRepo.getuserData();
+      // print(homeSlider.imgs!.length);
+
+      liveUserData.add(homeSlider);
+    } catch (e) {
+      print(e);
+    }
+  }
 }
 
 final homeBloc = HomeBloc();

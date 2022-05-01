@@ -34,3 +34,31 @@ class VenueListModal {
     venue_img = js['venue_img'] ?? "";
   }
 }
+
+class UserdetailModal {
+  UserDataModal? data;
+  UserdetailModal(js) {
+    data = UserDataModal(js['data']);
+  }
+}
+
+class UserDataModal {
+  String? userid;
+  String? name;
+  String? lastname;
+  String? mobile;
+  String? state;
+  String? city;
+  String? email;
+  String? pincode;
+  UserDataModal(js) {
+    userid = js['user_id'];
+    name = js['name'];
+    mobile = js['mob_no'];
+    lastname = js['last_name'];
+    email = js['email'];
+    city = js['city'];
+    state = js['state'];
+    pincode = js['pincode'];
+  }
+}
