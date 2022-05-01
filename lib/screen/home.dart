@@ -223,7 +223,8 @@ class HomePage extends StatelessWidget {
                                 icon: Icons.discount_outlined,
                               ),
                               Cont(
-                                title1: "Refer & Earn",
+                                title: "Refer",
+                                title1: "& Earn",
                                 icon: Icons.share,
                                 onTap: () {
                                   Navigator.pushNamed(context, '/referearn');
@@ -410,6 +411,7 @@ class Cont extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: Container(
+            width: 70,
             padding: EdgeInsets.all(5),
             decoration: BoxDecoration(
                 border: Border.all(color: Colors.white),
