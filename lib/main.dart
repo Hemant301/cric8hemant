@@ -10,6 +10,7 @@ import 'package:cric8hemant/screen/forgetotp.dart';
 import 'package:cric8hemant/screen/home.dart';
 import 'package:cric8hemant/screen/popup.dart';
 import 'package:cric8hemant/screen/profile.dart';
+import 'package:cric8hemant/screen/quickbook.dart';
 import 'package:cric8hemant/screen/referearn.dart';
 import 'package:cric8hemant/screen/setpassword.dart';
 import 'package:cric8hemant/screen/splashascreen.dart';
@@ -46,6 +47,7 @@ class MyApp extends StatelessWidget {
         "/changepwd": (context) => CgangePwd(),
         "/setpassword": (context) => Setpassword(),
         "/profile": (context) => Profile(),
+        "/quickbook": (context) => QuickBook(),
       },
     );
   }

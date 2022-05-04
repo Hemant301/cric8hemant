@@ -201,6 +201,9 @@ class HomePage extends StatelessWidget {
                                 icon: Icons.book_online_outlined,
                               ),
                               Cont(
+                                onTap: () {
+                                  Navigator.pushNamed(context, "/quickbook");
+                                },
                                 title: "Quick",
                                 title1: "Book",
                                 icon: Icons.abc_outlined,
