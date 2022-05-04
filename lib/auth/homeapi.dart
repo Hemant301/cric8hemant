@@ -21,6 +21,21 @@ class HomeApi {
     } finally {}
   }
 
+  Future<dynamic> fetchslot() async {
+    try {
+      final response =
+          await client.get(Uri.parse("${baseUrl}api/Venue/venue_list"));
+      if (response.statusCode == 200) {
+        print(response.body);
+        return response;
+      } else {
+        // print('Request failed with status: ${response.statusCode}.');
+      }
+    } catch (e) {
+      // print(e);
+    } finally {}
+  }
+
   Future<dynamic> getuserData() async {
     try {
       final response = await client.post(

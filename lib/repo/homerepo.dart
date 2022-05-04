@@ -11,6 +11,12 @@ class HomeRepo {
     return VenueModal(jsonResponse);
   }
 
+  Future<SlotModal> fetchslot() async {
+    final response = await homeApi.fetchslot();
+    var jsonResponse = jsonDecode(response.body) as Map;
+    return SlotModal(jsonResponse);
+  }
+
   Future<UserdetailModal> getuserData() async {
     final response = await homeApi.getuserData();
     var jsonResponse = jsonDecode(response.body) as Map;
