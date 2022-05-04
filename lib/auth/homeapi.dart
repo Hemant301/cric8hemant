@@ -23,8 +23,9 @@ class HomeApi {
 
   Future<dynamic> fetchslot() async {
     try {
-      final response =
-          await client.get(Uri.parse("${baseUrl}api/Venue/venue_list"));
+      final response = await client.post(
+          Uri.parse("${baseUrl}api/Users/get_slot_booking"),
+          body: {'venue_start_date': "2022-05-04"});
       if (response.statusCode == 200) {
         print(response.body);
         return response;
