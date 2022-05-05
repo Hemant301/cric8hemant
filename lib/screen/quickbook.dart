@@ -171,6 +171,47 @@ class _QuickBookState extends State<QuickBook> {
                                               fontSize: 30,
                                               color: Color(0xff74C69D)),
                                         )),
+                                    Container(
+                                      height: 45,
+                                      width: 60,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: Colors.white,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey.withOpacity(0.4),
+                                            spreadRadius: 1,
+                                            blurRadius: 1,
+                                            offset: Offset(1,
+                                                3), // changes position of shadow
+                                          ),
+                                        ],
+                                      ),
+                                      child: Center(
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 10),
+                                          child: DateTimePicker(
+                                            decoration: InputDecoration(
+                                                border: InputBorder.none),
+                                            // controller: _monclose,
+                                            type: DateTimePickerType.time,
+                                            // initialValue: '16/12/2001',
+                                            // firstDate: DateTime(1947),
+                                            // lastDate: DateTime(2200),
+                                            // dateLabelText: 'time',
+                                            // dateHintText: 'time',
+
+                                            style: TextStyle(fontSize: 16),
+                                            onChanged: (val) => print(val),
+                                            validator: (val) {
+                                              print(val);
+                                            },
+                                            onSaved: (val) => print(val),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
                                     SizedBox(
                                       height: 20,
                                     ),
