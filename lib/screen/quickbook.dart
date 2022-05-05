@@ -1,7 +1,10 @@
 import 'package:cric8hemant/bloc/homebloc.dart';
 import 'package:cric8hemant/modal/homemodal.dart';
+import 'package:cric8hemant/screen/bottombar.dart';
 import 'package:cric8hemant/screen/referearn.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 class QuickBook extends StatefulWidget {
   const QuickBook({Key? key}) : super(key: key);
@@ -11,8 +14,81 @@ class QuickBook extends StatefulWidget {
 }
 
 class _QuickBookState extends State<QuickBook> {
+  List<String> selectedBox = [];
+  late Razorpay _razorpay;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _razorpay = Razorpay();
+    _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
+    _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
+    _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _razorpay.clear();
+  }
+
+  void openCheckout(amount) async {
+    var options = {
+      'key': 'rzp_test_1DP5mmOlF5G5ag',
+      'amount': int.parse(amount) * 100,
+      'name': 'Bharat Mart.',
+      'description': 'Add Wallet Money',
+      'prefill': {'contact': '9798416091', 'email': 'test@razorpay.com'},
+      'external': {
+        'wallets': ['paytm']
+      }
+    };
+
+    try {
+      _razorpay.open(options);
+    } catch (e) {
+      debugPrint('Error: $e');
+    }
+  }
+
+  void _handlePaymentSuccess(PaymentSuccessResponse response) async {
+    String trnid = response.paymentId!;
+    // String userid = userCred.getUserId();
+    // walletbloc.fetchwallettrans(userid);
+    // cartApi.onPaymentSuceess(
+    //     userid: userCred.getUserId(),
+    //     totalamount: data['final_amount'],
+    //     paymentid: trnid,
+    //     emi_id: "0",
+    //     isemi: '0',
+    //     monthid: '0');
+
+    Fluttertoast.showToast(
+        msg: "SUCCESS: " + response.paymentId! + "Rs" + '300',
+        toastLength: Toast.LENGTH_SHORT);
+    Navigator.pushReplacementNamed(
+      context, '/firstScreen',
+      // arguments: {'amount': amount}
+    );
+  }
+
+  void _handlePaymentError(PaymentFailureResponse response) {
+    // Fluttertoast.showToast(
+    //     msg: "ERROR: " + response.code.toString() + " - " + response.message!,
+    //     toastLength: Toast.LENGTH_SHORT);
+  }
+
+  void _handleExternalWallet(ExternalWalletResponse response) {
+    Fluttertoast.showToast(
+        msg: "EXTERNAL_WALLET: " + response.walletName!,
+        toastLength: Toast.LENGTH_SHORT);
+  }
+
   @override
   Widget build(BuildContext context) {
+    print('see here');
+    print(selectedIndex.bitLength);
     homeBloc.fetchslot();
     return Scaffold(
         body: StreamBuilder<SlotModal>(
@@ -59,13 +135,21 @@ class _QuickBookState extends State<QuickBook> {
                                     SizedBox(
                                       height: 40,
                                     ),
-                                    const Align(
-                                      alignment: Alignment.topLeft,
-                                      child: Text(
-                                        "  Quick",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 40),
+                                    InkWell(
+                                      onTap: () {
+                                        setState(() {
+                                          selectedBox.add('1');
+                                        });
+                                        print(selectedBox);
+                                      },
+                                      child: const Align(
+                                        alignment: Alignment.topLeft,
+                                        child: Text(
+                                          "  Quick",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 40),
+                                        ),
                                       ),
                                     ),
                                     const Align(
@@ -97,35 +181,140 @@ class _QuickBookState extends State<QuickBook> {
                                                     const EdgeInsets.symmetric(
                                                         horizontal: 2,
                                                         vertical: 10),
-                                                child: Container(
-                                                  width: MediaQuery.of(context)
-                                                              .size
-                                                              .width /
-                                                          3 -
-                                                      10,
-                                                  padding: EdgeInsets.symmetric(
-                                                      vertical: 8,
-                                                      horizontal: 2),
-                                                  decoration: BoxDecoration(
-                                                      color: snapshot
+                                                child: InkWell(
+                                                  onTap: () {
+                                                    print(selectedBox);
+                                                    if (snapshot
+                                                            .data!
+                                                            .slot[index]
+                                                            .is_booked ==
+                                                        '1') {
+                                                      Fluttertoast.showToast(
+                                                          msg:
+                                                              'Already Booked');
+                                                      return;
+                                                    } else {
+                                                      if (selectedBox.contains(
+                                                          snapshot
+                                                              .data!
+                                                              .slot[index]
+                                                              .slot_time_id!)) {
+                                                        print('already exist');
+                                                        setState(() {
+                                                          selectedBox.remove(
+                                                              snapshot
                                                                   .data!
                                                                   .slot[index]
-                                                                  .is_booked ==
-                                                              "1"
-                                                          ? Colors.grey
-                                                          : Colors.transparent,
-                                                      border: Border.all(
-                                                          color: Colors.black),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10)),
-                                                  child: Text(
-                                                    '${snapshot.data!.slot[index].venue_start_time!} - ${snapshot.data!.slot[index].venue_end_time!}',
-                                                    style:
-                                                        TextStyle(fontSize: 12),
+                                                                  .slot_time_id!);
+                                                        });
+
+                                                        return;
+                                                      } else {
+                                                        print('true');
+                                                        setState(() {
+                                                          selectedBox.add(snapshot
+                                                              .data!
+                                                              .slot[index]
+                                                              .slot_time_id!);
+                                                        });
+                                                      }
+                                                    }
+                                                  },
+                                                  child: Container(
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                    .size
+                                                                    .width /
+                                                                3 -
+                                                            10,
+                                                    padding:
+                                                        EdgeInsets.symmetric(
+                                                            vertical: 8,
+                                                            horizontal: 2),
+                                                    decoration: BoxDecoration(
+                                                        color: snapshot
+                                                                    .data!
+                                                                    .slot[index]
+                                                                    .is_booked ==
+                                                                "1"
+                                                            ? Colors.grey
+                                                            : Colors
+                                                                .transparent,
+                                                        border: Border.all(
+                                                            color:
+                                                                Colors.black),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(10)),
+                                                    child: Text(
+                                                      '${snapshot.data!.slot[index].venue_start_time!} - ${snapshot.data!.slot[index].venue_end_time!}',
+                                                      style: TextStyle(
+                                                          fontSize: 12),
+                                                    ),
                                                   ),
                                                 ),
                                               )),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Row(
+                                        children: [
+                                          Text('Total slot selected'),
+                                          Spacer(
+                                            flex: 1,
+                                          ),
+                                          Text('₹500')
+                                        ],
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Row(
+                                        children: [
+                                          Text('Total slot selected'),
+                                          Spacer(
+                                            flex: 1,
+                                          ),
+                                          Text('₹500')
+                                        ],
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Row(
+                                        children: [
+                                          Text('Total slot selected'),
+                                          Spacer(
+                                            flex: 1,
+                                          ),
+                                          Text('₹500')
+                                        ],
+                                      ),
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        openCheckout('500');
+                                      },
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(15.0),
+                                        child: Align(
+                                          alignment: Alignment.topRight,
+                                          child: Container(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 20, vertical: 10),
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                  color: Color(0xff74C69D)),
+                                              child: Text(
+                                                'Proceed to pay',
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              )),
+                                        ),
+                                      ),
                                     )
                                   ],
                                 ))
