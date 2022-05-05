@@ -279,7 +279,7 @@ class _QuickBookState extends State<QuickBook> {
                                             flex: 1,
                                           ),
                                           Text(snapshot.data!.slot_price
-                                              .toString()!),
+                                              .toString()),
                                         ],
                                       ),
                                     ),
