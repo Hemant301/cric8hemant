@@ -51,7 +51,7 @@ class AuthApi {
       final response = await client.post(
           Uri.parse("https://cric8innet.com/api/Users/user_login"),
           body: {
-            'username': username,
+            'email': username,
             'password': password,
           });
       if (response.statusCode == 200 || response.statusCode == 201) {

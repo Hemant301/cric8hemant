@@ -16,6 +16,7 @@ class QuickBook extends StatefulWidget {
 
 class _QuickBookState extends State<QuickBook> {
   List<String> selectedBox = [];
+  List<String> selectedPrice = [];
   late Razorpay _razorpay;
 
   @override
@@ -86,307 +87,293 @@ class _QuickBookState extends State<QuickBook> {
         toastLength: Toast.LENGTH_SHORT);
   }
 
+  Map<String, String> a = {};
+
   @override
   Widget build(BuildContext context) {
     print('see here');
     print(selectedIndex.bitLength);
-    homeBloc.fetchslot();
     return Scaffold(
-        body: StreamBuilder<SlotModal>(
-            stream: homeBloc.getSlot.stream,
-            builder: (context, snapshot) {
-              if (!snapshot.hasData) return Container();
-              return SingleChildScrollView(
-                  child: Stack(children: [
-                Padding(
-                    padding: const EdgeInsets.only(bottom: 50),
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Stack(children: [
-                            Positioned(
-                              right: 0,
-                              top: 0,
-                              child: Image(
-                                image: AssetImage(
-                                  'assets/meetbg.png',
-                                ),
-                                // height: 200,
-                                // width: 200,
+        body: SingleChildScrollView(
+            child: Stack(children: [
+      Padding(
+          padding: const EdgeInsets.only(bottom: 50),
+          child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+            Stack(children: [
+              Positioned(
+                right: 0,
+                top: 0,
+                child: Image(
+                  image: AssetImage(
+                    'assets/meetbg.png',
+                  ),
+                  // height: 200,
+                  // width: 200,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(12.0),
+                child: Align(
+                  alignment: Alignment.topRight,
+                  child: Icon(
+                    Icons.notifications,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+              Padding(
+                  padding: const EdgeInsets.only(top: 40, left: 10),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      BackButtonss(),
+                      SizedBox(
+                        height: 40,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          showDatePicker(
+                              context: context,
+                              initialDate: DateTime(1947),
+                              firstDate: DateTime(1947),
+                              lastDate: DateTime(2023));
+                        },
+                        child: const Align(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            "  Quick",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 40),
+                          ),
+                        ),
+                      ),
+                      const Align(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            "   Book",
+                            style: TextStyle(fontSize: 35),
+                          )),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      const Align(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            "NET 1",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 30,
+                                color: Color(0xff74C69D)),
+                          )),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        padding: EdgeInsets.all(2),
+                        decoration: BoxDecoration(
+                            color: Colors.black,
+                            borderRadius: BorderRadius.circular(10)),
+                        width: 150,
+                        child: DateTimePicker(
+                          firstDate: DateTime(2022),
+                          lastDate: DateTime(2023),
+                          style: TextStyle(color: Colors.white),
+                          onChanged: (s) {
+                            print(s);
+                            setState(() {
+                              homeBloc.fetchslot(date: s);
+                            });
+                          },
+                          decoration: InputDecoration(
+                              suffixIcon: Icon(
+                                Icons.arrow_downward,
+                                color: Colors.white,
                               ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(12.0),
-                              child: Align(
-                                alignment: Alignment.topRight,
-                                child: Icon(
-                                  Icons.notifications,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
-                            Padding(
-                                padding:
-                                    const EdgeInsets.only(top: 40, left: 10),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    BackButtonss(),
-                                    SizedBox(
-                                      height: 40,
-                                    ),
-                                    InkWell(
-                                      onTap: () {
-                                        setState(() {
-                                          selectedBox.add('1');
-                                        });
-                                        print(selectedBox);
-                                      },
-                                      child: const Align(
-                                        alignment: Alignment.topLeft,
-                                        child: Text(
-                                          "  Quick",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 40),
-                                        ),
-                                      ),
-                                    ),
-                                    const Align(
-                                        alignment: Alignment.topLeft,
-                                        child: Text(
-                                          "   Book",
-                                          style: TextStyle(fontSize: 35),
-                                        )),
-                                    SizedBox(
-                                      height: 20,
-                                    ),
-                                    const Align(
-                                        alignment: Alignment.topLeft,
-                                        child: Text(
-                                          "NET 1",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 30,
-                                              color: Color(0xff74C69D)),
-                                        )),
-                                    Container(
-                                      height: 45,
-                                      width: 60,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        color: Colors.white,
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: Colors.grey.withOpacity(0.4),
-                                            spreadRadius: 1,
-                                            blurRadius: 1,
-                                            offset: Offset(1,
-                                                3), // changes position of shadow
-                                          ),
-                                        ],
-                                      ),
-                                      child: Center(
-                                        child: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 10),
-                                          child: DateTimePicker(
-                                            decoration: InputDecoration(
-                                                border: InputBorder.none),
-                                            // controller: _monclose,
-                                            type: DateTimePickerType.time,
-                                            // initialValue: '16/12/2001',
-                                            // firstDate: DateTime(1947),
-                                            // lastDate: DateTime(2200),
-                                            // dateLabelText: 'time',
-                                            // dateHintText: 'time',
-
-                                            style: TextStyle(fontSize: 16),
-                                            onChanged: (val) => print(val),
-                                            validator: (val) {
-                                              print(val);
-                                            },
-                                            onSaved: (val) => print(val),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 20,
-                                    ),
-                                    Wrap(
-                                      children: List.generate(
-                                          snapshot.data!.slot.length,
-                                          (index) => Padding(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                        horizontal: 2,
-                                                        vertical: 10),
-                                                child: InkWell(
-                                                  onTap: () {
-                                                    // print(snapshot
-                                                    //     .data!
-                                                    //     .slot[index]
-                                                    //     .slot_time_id);
-                                                    // return;
-                                                    print(selectedBox);
-                                                    if (snapshot
-                                                            .data!
-                                                            .slot[index]
-                                                            .is_booked ==
-                                                        '1') {
-                                                      Fluttertoast.showToast(
-                                                          msg:
-                                                              'Already Booked');
-                                                      return;
-                                                    } else {
-                                                      if (selectedBox.contains(
+                              labelStyle: TextStyle(color: Colors.white),
+                              hintStyle: TextStyle(color: Colors.white),
+                              border: InputBorder.none),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      StreamBuilder<SlotModal>(
+                          stream: homeBloc.getSlot.stream,
+                          builder: (context, snapshot) {
+                            if (!snapshot.hasData) return Container();
+                            return Column(
+                              children: [
+                                Wrap(
+                                  children: List.generate(
+                                      snapshot.data!.slot.length,
+                                      (index) => Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 2, vertical: 10),
+                                            child: InkWell(
+                                              onTap: () {
+                                                // print(snapshot
+                                                //     .data!
+                                                //     .slot[index]
+                                                //     .slot_time_id);
+                                                // return;
+                                                print(selectedBox);
+                                                if (snapshot.data!.slot[index]
+                                                        .is_booked ==
+                                                    '1') {
+                                                  Fluttertoast.showToast(
+                                                      msg: 'Already Booked');
+                                                  return;
+                                                } else {
+                                                  if (selectedBox.contains(
+                                                      snapshot.data!.slot[index]
+                                                          .slot_time_id!)) {
+                                                    print('already exist');
+                                                    setState(() {
+                                                      selectedBox.remove(
                                                           snapshot
                                                               .data!
                                                               .slot[index]
-                                                              .slot_time_id!)) {
-                                                        print('already exist');
-                                                        setState(() {
-                                                          selectedBox.remove(
-                                                              snapshot
-                                                                  .data!
-                                                                  .slot[index]
-                                                                  .slot_time_id!);
-                                                        });
-
-                                                        return;
-                                                      } else {
-                                                        print('true');
-                                                        setState(() {
-                                                          selectedBox.add(snapshot
+                                                              .slot_time_id!);
+                                                      selectedPrice.remove(
+                                                          snapshot
                                                               .data!
                                                               .slot[index]
-                                                              .slot_time_id!);
-                                                        });
-                                                      }
-                                                    }
-                                                  },
-                                                  child: Container(
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                    .size
-                                                                    .width /
-                                                                3 -
-                                                            10,
-                                                    padding:
-                                                        EdgeInsets.symmetric(
-                                                            vertical: 8,
-                                                            horizontal: 2),
-                                                    decoration: BoxDecoration(
-                                                        color: snapshot
+                                                              .Slot_price!);
+                                                    });
+
+                                                    return;
+                                                  } else {
+                                                    print('true');
+                                                    setState(() {
+                                                      selectedBox.add(snapshot
+                                                          .data!
+                                                          .slot[index]
+                                                          .slot_time_id!);
+                                                      selectedPrice.add(snapshot
+                                                          .data!
+                                                          .slot[index]
+                                                          .Slot_price!);
+                                                    });
+                                                  }
+                                                }
+                                              },
+                                              child: Container(
+                                                width: MediaQuery.of(context)
+                                                            .size
+                                                            .width /
+                                                        3 -
+                                                    10,
+                                                padding: EdgeInsets.symmetric(
+                                                    vertical: 8, horizontal: 2),
+                                                decoration: BoxDecoration(
+                                                    color: snapshot
+                                                                .data!
+                                                                .slot[index]
+                                                                .is_booked ==
+                                                            "1"
+                                                        ? Colors.red
+                                                        : selectedBox.contains(
+                                                                snapshot
                                                                     .data!
                                                                     .slot[index]
-                                                                    .is_booked ==
-                                                                "1"
-                                                            ? Colors.red
-                                                            : selectedBox.contains(
-                                                                    snapshot
-                                                                        .data!
-                                                                        .slot[
-                                                                            index]
-                                                                        .slot_time_id)
-                                                                ? Colors.green
-                                                                : Colors
-                                                                    .transparent,
-                                                        border: Border.all(
-                                                            color:
-                                                                Colors.black),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10)),
-                                                    child: Center(
-                                                      child: Text(
-                                                        '${snapshot.data!.slot[index].venue_start_time!} - ${snapshot.data!.slot[index].venue_end_time!}',
-                                                        style: TextStyle(
-                                                            fontSize: 10),
-                                                      ),
-                                                    ),
+                                                                    .slot_time_id)
+                                                            ? Colors.green
+                                                            : Colors
+                                                                .transparent,
+                                                    border: Border.all(
+                                                        color: Colors.black),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10)),
+                                                child: Center(
+                                                  child: Text(
+                                                    '${snapshot.data!.slot[index].venue_start_time!} - ${snapshot.data!.slot[index].venue_end_time!}',
+                                                    style:
+                                                        TextStyle(fontSize: 10),
                                                   ),
                                                 ),
-                                              )),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Row(
-                                        children: [
-                                          Text('Slot price'),
-                                          Spacer(
-                                            flex: 1,
-                                          ),
-                                          Text(snapshot.data!.slot_price
-                                              .toString()),
-                                        ],
+                                              ),
+                                            ),
+                                          )),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    children: [
+                                      Text('Slot price'),
+                                      Spacer(
+                                        flex: 1,
                                       ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Row(
-                                        children: [
-                                          Text('Total slot selected'),
-                                          Spacer(
-                                            flex: 1,
-                                          ),
-                                          Text(
-                                              '${selectedBox.length.toString()}')
-                                        ],
+                                      // Text(
+                                      //     '₹ ${snapshot.data!.slot_price.toString()}'),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    children: [
+                                      Text('Total slot selected'),
+                                      Spacer(
+                                        flex: 1,
                                       ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Row(
-                                        children: [
-                                          Text('Total Price'),
-                                          Spacer(
-                                            flex: 1,
-                                          ),
-                                          Container(
-                                            child: Text(
-                                                '${(selectedBox.length) * (int.parse(snapshot.data!.slot_price!))}'),
-                                          )
-                                        ],
+                                      Text(
+                                          '${selectedBox.length.toString()} Slot')
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    children: [
+                                      Text('Total Price'),
+                                      Spacer(
+                                        flex: 1,
                                       ),
+                                      // Container(
+                                      //   child: Text(
+                                      //       '₹ ${(selectedBox.length) * (int.parse(snapshot.data!.slot_price!))}'),
+                                      // )
+                                    ],
+                                  ),
+                                ),
+                                InkWell(
+                                  onTap: () {
+                                    // openCheckout(
+                                    //     '${(selectedBox.length) * (int.parse(snapshot.data!.slot_price!))}');
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(15.0),
+                                    child: Align(
+                                      alignment: Alignment.topRight,
+                                      child: Container(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 20, vertical: 10),
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              color: Color(0xff74C69D)),
+                                          child: Text(
+                                            'Proceed to pay',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold),
+                                          )),
                                     ),
-                                    InkWell(
-                                      onTap: () {
-                                        openCheckout(
-                                            '${(selectedBox.length) * (int.parse(snapshot.data!.slot_price!))}');
-                                      },
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(15.0),
-                                        child: Align(
-                                          alignment: Alignment.topRight,
-                                          child: Container(
-                                              padding: EdgeInsets.symmetric(
-                                                  horizontal: 20, vertical: 10),
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  color: Color(0xff74C69D)),
-                                              child: Text(
-                                                'Proceed to pay',
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              )),
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ))
-                          ]),
-                          // Text(
-                          //   "   Book",
-                          //   style: TextStyle(fontSize: 35),
-                          // )
-                        ]))
-              ]));
-            }));
+                                  ),
+                                ),
+                              ],
+                            );
+                          })
+                    ],
+                  ))
+            ]),
+            // Text(
+            //   "   Book",
+            //   style: TextStyle(fontSize: 35),
+            // )
+          ]))
+    ])));
   }
 }
