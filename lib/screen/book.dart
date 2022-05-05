@@ -1,4 +1,5 @@
 import 'package:cric8hemant/bloc/homebloc.dart';
+import 'package:cric8hemant/const/user_cred.dart';
 import 'package:cric8hemant/modal/homemodal.dart';
 import "package:flutter/material.dart";
 
@@ -96,6 +97,15 @@ class BookPage extends StatelessWidget {
                                         title: "Offer",
                                       ),
                                       contaItem(
+                                        onTap: () {
+                                          if (userCred.isUserLogin()) {
+                                            Navigator.pushNamed(
+                                                context, "/quickbook");
+                                          } else {
+                                            Navigator.pushNamed(
+                                                context, "/login");
+                                          }
+                                        },
                                         icon: Icons.quick_contacts_dialer,
                                         title: "Quick Book",
                                       )
@@ -271,35 +281,39 @@ class BookPage extends StatelessWidget {
 }
 
 class contaItem extends StatelessWidget {
-  contaItem({Key? key, this.icon, this.title}) : super(key: key);
+  contaItem({Key? key, this.icon, this.title, this.onTap}) : super(key: key);
   String? title;
   IconData? icon;
+  Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(10),
-        child: Container(
-          color: Colors.black,
-          padding: EdgeInsets.all(8),
-          child: Row(
-            children: [
-              Icon(
-                icon!,
-                // Icons.discount,
-                color: Colors.white,
-                size: 20,
-              ),
-              SizedBox(
-                width: 5,
-              ),
-              Text(
-                title!,
-                // "favortes",
-                style: TextStyle(color: Colors.white),
-              ),
-            ],
+      child: InkWell(
+        onTap: onTap,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: Container(
+            color: Colors.black,
+            padding: EdgeInsets.all(8),
+            child: Row(
+              children: [
+                Icon(
+                  icon!,
+                  // Icons.discount,
+                  color: Colors.white,
+                  size: 20,
+                ),
+                SizedBox(
+                  width: 5,
+                ),
+                Text(
+                  title!,
+                  // "favortes",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ],
+            ),
           ),
         ),
       ),

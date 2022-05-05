@@ -19,6 +19,18 @@ class HomePage extends StatelessWidget {
                 image: AssetImage('assets/homebg.png')),
             Column(
               children: [
+                const Padding(
+                  padding: EdgeInsets.only(left: 8),
+                  child: Align(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      "Crick8inNet",
+                      textAlign: TextAlign.left,
+                      style:
+                          TextStyle(color: Colors.white, fontFamily: "bolds"),
+                    ),
+                  ),
+                ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: InkWell(
@@ -62,7 +74,7 @@ class HomePage extends StatelessWidget {
                   height: MediaQuery.of(context).size.height * 0.1,
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.7,
+                  width: MediaQuery.of(context).size.width * 0.8,
                   child: Card(
                     color: Colors.black,
                     child: Row(
@@ -76,7 +88,7 @@ class HomePage extends StatelessWidget {
                                 ),
                                 shape: BoxShape.circle),
                             child: IconButton(
-                                iconSize: 25,
+                                iconSize: 20,
                                 onPressed: () {},
                                 icon: const Icon(
                                   Icons.person_rounded,
@@ -202,7 +214,11 @@ class HomePage extends StatelessWidget {
                               ),
                               Cont(
                                 onTap: () {
-                                  Navigator.pushNamed(context, "/quickbook");
+                                  if (userCred.isUserLogin()) {
+                                    Navigator.pushNamed(context, "/quickbook");
+                                  } else {
+                                    Navigator.pushNamed(context, "/login");
+                                  }
                                 },
                                 title: "Quick",
                                 title1: "Book",
