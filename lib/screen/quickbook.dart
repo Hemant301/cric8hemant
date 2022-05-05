@@ -1,4 +1,5 @@
 import 'package:cric8hemant/screen/referearn.dart';
+import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
 
 class QuickBook extends StatelessWidget {
@@ -61,6 +62,38 @@ class QuickBook extends StatelessWidget {
                     ],
                   ))
             ]),
+            Container(
+              height: 45,
+              width: 60,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.4),
+                    spreadRadius: 1,
+                    blurRadius: 1,
+                    offset: Offset(1, 3), // changes position of shadow
+                  ),
+                ],
+              ),
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: DateTimePicker(
+                    decoration: InputDecoration(border: InputBorder.none),
+                    // controller: _monopen,
+                    type: DateTimePickerType.time,
+                    style: TextStyle(fontSize: 16),
+                    onChanged: (val) => print(val),
+                    validator: (val) {
+                      print(val);
+                    },
+                    onSaved: (val) => print(val),
+                  ),
+                ),
+              ),
+            ),
             // Text(
             //   "   Book",
             //   style: TextStyle(fontSize: 35),
