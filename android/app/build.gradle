@@ -44,7 +44,7 @@ android {
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.example.cric8hemant"
-        minSdkVersion 18
+        minSdkVersion 19
         targetSdkVersion 21
         versionCode 1
         versionName "1.0.0"

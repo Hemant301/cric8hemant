@@ -18,6 +18,19 @@ class HomeBloc {
     }
   }
 
+  final BehaviorSubject<SlotModal> _liveSlot = BehaviorSubject<SlotModal>();
+  BehaviorSubject<SlotModal> get getSlot => _liveSlot;
+  fetchslot() async {
+    try {
+      SlotModal homeSlider = await _homeRepo.fetchslot();
+      // print(homeSlider.imgs!.length);
+
+      _liveSlot.add(homeSlider);
+    } catch (e) {
+      print(e);
+    }
+  }
+
   final BehaviorSubject<UserdetailModal> liveUserData =
       BehaviorSubject<UserdetailModal>();
   BehaviorSubject<UserdetailModal> get getUserdetails => liveUserData;

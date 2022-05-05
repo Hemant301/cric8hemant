@@ -62,3 +62,31 @@ class UserDataModal {
     pincode = js['pincode'];
   }
 }
+
+class SlotModal {
+  dynamic status;
+  dynamic message;
+  String? slot_price;
+  List<SlotdataModal> slot = [];
+  SlotModal(js) {
+    status = js['status'] ?? "";
+    message = js['message'] ?? "";
+    slot_price = js['slot_price'] ?? "";
+    for (var i = 0; i < js['data'].length; i++) {
+      slot.add(SlotdataModal(js['data'][i]));
+    }
+  }
+}
+
+class SlotdataModal {
+  String? venue_start_time;
+  String? venue_end_time;
+  String? slot_time_id;
+  String? is_booked;
+  SlotdataModal(js) {
+    venue_start_time = js['venue_start_time'] ?? "";
+    venue_end_time = js['venue_end_time'] ?? "";
+    slot_time_id = js['slot_id'] ?? "";
+    is_booked = js['is_booked'] ?? "";
+  }
+}
