@@ -96,11 +96,8 @@ class _QuickBookState extends State<QuickBook> {
     var sum = 0;
     for (i = 0; i < slectedPrice.length; i++) {
 // 	print(arr[i]);
-<<<<<<< HEAD
       sum += slectedPrice[i].toInt();
-=======
-      sum += slectedPrice[i];
->>>>>>> feefab8046c5bd76c87016b04086f711fa7767c9
+    h
       print(sum);
     }
     print(selectedIndex.bitLength);
