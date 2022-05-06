@@ -16,7 +16,7 @@ class QuickBook extends StatefulWidget {
 
 class _QuickBookState extends State<QuickBook> {
   List<String> selectedBox = [];
-  List<double> slectedPrice = [];
+  List<int> slectedPrice = [];
   late Razorpay _razorpay;
 
   @override
@@ -96,7 +96,11 @@ class _QuickBookState extends State<QuickBook> {
     var sum = 0;
     for (i = 0; i < slectedPrice.length; i++) {
 // 	print(arr[i]);
+<<<<<<< HEAD
       sum += slectedPrice[i].toInt();
+=======
+      sum += slectedPrice[i];
+>>>>>>> feefab8046c5bd76c87016b04086f711fa7767c9
       print(sum);
     }
     print(selectedIndex.bitLength);
@@ -261,16 +265,17 @@ class _QuickBookState extends State<QuickBook> {
                                                         print('already exist');
                                                         setState(() {
                                                           slectedPrice.remove(
-                                                              snapshot
+                                                              int.parse(snapshot
                                                                   .data!
                                                                   .slot[index]
-                                                                  .price!);
+                                                                  .price!));
 
                                                           selectedBox.remove(
                                                               snapshot
                                                                   .data!
                                                                   .slot[index]
-                                                                  .slot_time_id!);
+                                                                  .slot_time_id!
+                                                                  .toString());
                                                         });
 
                                                         return;
@@ -278,10 +283,10 @@ class _QuickBookState extends State<QuickBook> {
                                                         print('true');
                                                         setState(() {
                                                           slectedPrice.add(
-                                                              snapshot
+                                                              int.parse(snapshot
                                                                   .data!
                                                                   .slot[index]
-                                                                  .price!);
+                                                                  .price!));
                                                           selectedBox.add(snapshot
                                                               .data!
                                                               .slot[index]
@@ -369,8 +374,7 @@ class _QuickBookState extends State<QuickBook> {
                                             flex: 1,
                                           ),
                                           Container(
-                                            child:
-                                                Text('${(selectedBox.length)}'),
+                                            child: Text(sum.toString()),
                                           )
                                         ],
                                       ),

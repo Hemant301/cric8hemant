@@ -84,7 +84,7 @@ class SlotdataModal {
   String? slot_time_id;
   String? Slot_price;
   String? is_booked;
-  double? price;
+  String? price;
   SlotdataModal(js) {
     venue_start_time = js['venue_start_time'] ?? "";
     venue_end_time = js['venue_end_time'] ?? "";
