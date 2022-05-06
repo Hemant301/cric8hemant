@@ -377,8 +377,7 @@ class _QuickBookState extends State<QuickBook> {
                                     ),
                                     InkWell(
                                       onTap: () {
-                                        // openCheckout(
-                                        //     '${(selectedBox.length) * (int.parse(snapshot.data!.slot_price!))}');
+                                        openCheckout(sum.toString());
                                       },
                                       child: Padding(
                                         padding: const EdgeInsets.all(15.0),
