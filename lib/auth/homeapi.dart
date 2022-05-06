@@ -25,11 +25,7 @@ class HomeApi {
     try {
       final response = await client.post(
           Uri.parse("${baseUrl}api/Users/get_slot_booking"),
-<<<<<<< HEAD
-          body: {'venue_start_date': date});
-=======
           body: {'venue_start_date': "2022-05-07"});
->>>>>>> feefab8046c5bd76c87016b04086f711fa7767c9
       if (response.statusCode == 200) {
         // print(response.body);
         return response;
@@ -97,6 +93,25 @@ class HomeApi {
   }
 
   Future<dynamic> resetpassword(String phone, String password) async {
+    var client = http.Client();
+    try {
+      final response = await client.post(
+          Uri.parse("${baseUrl}api/Users/reset_password"),
+          body: {'mobile': phone, 'password': password});
+      if (response.statusCode == 200) {
+        print(response.body);
+        return jsonDecode(response.body) as Map;
+      } else {
+        print('Request failed with status: ${response.statusCode}.');
+      }
+    } catch (e) {
+      print(e);
+    } finally {
+      client.close();
+    }
+  }
+
+  Future<dynamic> confirmBooking(String phone, String password) async {
     var client = http.Client();
     try {
       final response = await client.post(
