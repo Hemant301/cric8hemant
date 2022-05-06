@@ -25,11 +25,7 @@ class HomeApi {
     try {
       final response = await client.post(
           Uri.parse("${baseUrl}api/Users/get_slot_booking"),
-<<<<<<< HEAD
           body: {'venue_start_date': "2022-05-07"});
-=======
-          body: {'venue_start_date': date});
->>>>>>> 7958d74380fc73ef35040455d6d7718e9fddb9fe
       if (response.statusCode == 200) {
         // print(response.body);
         return response;
