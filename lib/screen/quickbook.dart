@@ -1,9 +1,12 @@
+import 'package:cric8hemant/auth/homeapi.dart';
 import 'package:cric8hemant/bloc/homebloc.dart';
 import 'package:cric8hemant/modal/homemodal.dart';
+import 'package:cric8hemant/screen/book.dart';
 import 'package:cric8hemant/screen/bottombar.dart';
 import 'package:cric8hemant/screen/referearn.dart';
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dropdown/flutter_dropdown.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 
@@ -65,12 +68,15 @@ class _QuickBookState extends State<QuickBook> {
     //     emi_id: "0",
     //     isemi: '0',
     //     monthid: '0');
-
+    homeApi.confirmBooking(
+        date: dateController.text,
+        slot_id: selectedBox,
+        payid: response.paymentId!);
     Fluttertoast.showToast(
-        msg: "SUCCESS: " + response.paymentId! + "Rs" + '300',
+        msg: "SUCCESS: " + response.paymentId!,
         toastLength: Toast.LENGTH_SHORT);
     Navigator.pushReplacementNamed(
-      context, '/firstScreen',
+      context, '/boot',
       // arguments: {'amount': amount}
     );
   }
@@ -87,9 +93,12 @@ class _QuickBookState extends State<QuickBook> {
         toastLength: Toast.LENGTH_SHORT);
   }
 
+  TextEditingController dateController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     print('see here');
+    homeBloc.getCityname();
     print(slectedPrice);
     print(selectedBox);
     int i;
@@ -164,6 +173,29 @@ class _QuickBookState extends State<QuickBook> {
                       SizedBox(
                         height: 20,
                       ),
+                      // DropdownButton(items: [], onChanged: (s){})
+                      StreamBuilder<CityModal>(
+                          stream: homeBloc.getCity.stream,
+                          builder: (context, snapshot) {
+                            if (!snapshot.hasData) return Container();
+                            return DropDown(
+                              items: List.generate(snapshot.data!.data.length,
+                                  (index) => snapshot.data!.data[index].place!),
+                              hint: Text(
+                                "Select City",
+                              ),
+                              icon: Icon(
+                                Icons.expand_more,
+                                size: 30,
+                                // color: iconColor,
+                              ),
+                              onChanged: (s) {
+                                print(s);
+
+                                // String id = snapshot.data!.emi[s].emi!;
+                              },
+                            );
+                          }),
                       const Align(
                           alignment: Alignment.topLeft,
                           child: Text(
@@ -173,6 +205,9 @@ class _QuickBookState extends State<QuickBook> {
                                 fontSize: 30,
                                 color: Color(0xff74C69D)),
                           )),
+                      SizedBox(
+                        height: 10,
+                      ),
                       Container(
                         padding: EdgeInsets.all(2),
                         decoration: BoxDecoration(
@@ -180,6 +215,7 @@ class _QuickBookState extends State<QuickBook> {
                             borderRadius: BorderRadius.circular(10)),
                         width: 150,
                         child: DateTimePicker(
+                          controller: dateController,
                           firstDate: DateTime(2022),
                           lastDate: DateTime(2023),
                           style: TextStyle(color: Colors.white),
@@ -332,7 +368,7 @@ class _QuickBookState extends State<QuickBook> {
                                   ),
                                 ),
                                 InkWell(
-                                  onTap: () {
+                                  onTap: () async {
                                     if (sum == 0) {
                                       Fluttertoast.showToast(
                                           msg: 'Select Your slot');

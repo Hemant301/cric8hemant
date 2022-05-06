@@ -8,6 +8,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(userCred.getUserId());
     return SafeArea(
       child: Scaffold(
         body: Stack(
@@ -57,14 +58,17 @@ class HomePage extends StatelessWidget {
                                   Icons.share_location,
                                   color: Colors.white,
                                 ),
-                                Icon(
-                                  Icons.arrow_drop_down,
-                                  color: Colors.white,
+                                SizedBox(
+                                  width: 8,
                                 ),
                                 Text(
                                   userCred.getPincode(),
                                   style: TextStyle(color: Colors.white),
-                                )
+                                ),
+                                Icon(
+                                  Icons.arrow_drop_down,
+                                  color: Colors.white,
+                                ),
                               ],
                             ),
                           ),

@@ -22,4 +22,10 @@ class HomeRepo {
     var jsonResponse = jsonDecode(response.body) as Map;
     return UserdetailModal(jsonResponse);
   }
+
+  Future<CityModal> getCityname() async {
+    final response = await homeApi.getCityname();
+    var jsonResponse = jsonDecode(response.body) as Map;
+    return CityModal(jsonResponse);
+  }
 }

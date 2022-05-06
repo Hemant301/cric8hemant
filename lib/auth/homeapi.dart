@@ -25,7 +25,7 @@ class HomeApi {
     try {
       final response = await client.post(
           Uri.parse("${baseUrl}api/Users/get_slot_booking"),
-          body: {'venue_start_date': "2022-05-07"});
+          body: {'venue_start_date': date});
       if (response.statusCode == 200) {
         // print(response.body);
         return response;
@@ -41,6 +41,22 @@ class HomeApi {
     try {
       final response = await client.post(
           Uri.parse("${baseUrl}api/Users/user_details"),
+          body: {'user_id': userCred.getUserId()});
+      if (response.statusCode == 200) {
+        print(response.body);
+        return response;
+      } else {
+        // print('Request failed with status: ${response.statusCode}.');
+      }
+    } catch (e) {
+      // print(e);
+    } finally {}
+  }
+
+  Future<dynamic> getCityname() async {
+    try {
+      final response = await client.post(
+          Uri.parse("${baseUrl}api/Users/get_location"),
           body: {'user_id': userCred.getUserId()});
       if (response.statusCode == 200) {
         print(response.body);
@@ -111,12 +127,20 @@ class HomeApi {
     }
   }
 
-  Future<dynamic> confirmBooking(String phone, String password) async {
+  Future<dynamic> confirmBooking(
+      {String date = "", List? slot_id, String payid = ""}) async {
+    String demo = slot_id.toString().substring(1);
+    String slotMain = demo.substring(0, demo.length - 1);
+    print(slotMain);
     var client = http.Client();
     try {
-      final response = await client.post(
-          Uri.parse("${baseUrl}api/Users/reset_password"),
-          body: {'mobile': phone, 'password': password});
+      final response = await client
+          .post(Uri.parse("${baseUrl}api/Users/slot_booking"), body: {
+        'venue_start_date': date,
+        'slot_id': slotMain,
+        'user_id': userCred.getUserId(),
+        'razorpay_id': payid
+      });
       if (response.statusCode == 200) {
         print(response.body);
         return jsonDecode(response.body) as Map;
@@ -160,3 +184,5 @@ class HomeApi {
     }
   }
 }
+
+final homeApi = HomeApi();
