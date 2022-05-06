@@ -125,7 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             userCred.addUserId(
                                 data['user_info']['user_id'].toString());
                             Fluttertoast.showToast(msg: data['message']);
-                            Navigator.pushReplacementNamed(context, "/boot");
+                            Navigator.pushReplacementNamed(context, "/pincode");
                           } else {
                             Fluttertoast.showToast(msg: data['message']);
                             return;

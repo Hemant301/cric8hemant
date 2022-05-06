@@ -16,6 +16,7 @@ class QuickBook extends StatefulWidget {
 
 class _QuickBookState extends State<QuickBook> {
   List<String> selectedBox = [];
+  List<double> slectedPrice = [];
   late Razorpay _razorpay;
 
   @override
@@ -89,6 +90,15 @@ class _QuickBookState extends State<QuickBook> {
   @override
   Widget build(BuildContext context) {
     print('see here');
+    print(slectedPrice);
+    print(selectedBox);
+
+    var sum = 0;
+    for (var i = 0; i < slectedPrice.length; i++) {
+// 	print(arr[i]);
+      sum += slectedPrice[i].toInt();
+      print(sum);
+    }
     print(selectedIndex.bitLength);
     homeBloc.fetchslot();
     return Scaffold(
@@ -140,8 +150,10 @@ class _QuickBookState extends State<QuickBook> {
                                       onTap: () {
                                         setState(() {
                                           selectedBox.add('1');
+                                          slectedPrice.add(0);
                                         });
                                         print(selectedBox);
+                                        print(slectedPrice);
                                       },
                                       child: const Align(
                                         alignment: Alignment.topLeft,
@@ -248,6 +260,12 @@ class _QuickBookState extends State<QuickBook> {
                                                               .slot_time_id!)) {
                                                         print('already exist');
                                                         setState(() {
+                                                          slectedPrice.remove(
+                                                              snapshot
+                                                                  .data!
+                                                                  .slot[index]
+                                                                  .price!);
+
                                                           selectedBox.remove(
                                                               snapshot
                                                                   .data!
@@ -259,6 +277,11 @@ class _QuickBookState extends State<QuickBook> {
                                                       } else {
                                                         print('true');
                                                         setState(() {
+                                                          slectedPrice.add(
+                                                              snapshot
+                                                                  .data!
+                                                                  .slot[index]
+                                                                  .price!);
                                                           selectedBox.add(snapshot
                                                               .data!
                                                               .slot[index]
@@ -319,8 +342,8 @@ class _QuickBookState extends State<QuickBook> {
                                           Spacer(
                                             flex: 1,
                                           ),
-                                          Text(snapshot.data!.slot_price
-                                              .toString()),
+                                          Text(
+                                              "snapshot.data!.slot_price .toString()"),
                                         ],
                                       ),
                                     ),
@@ -346,16 +369,16 @@ class _QuickBookState extends State<QuickBook> {
                                             flex: 1,
                                           ),
                                           Container(
-                                            child: Text(
-                                                '${(selectedBox.length) * (int.parse(snapshot.data!.slot_price!))}'),
+                                            child:
+                                                Text('${(selectedBox.length)}'),
                                           )
                                         ],
                                       ),
                                     ),
                                     InkWell(
                                       onTap: () {
-                                        openCheckout(
-                                            '${(selectedBox.length) * (int.parse(snapshot.data!.slot_price!))}');
+                                        // openCheckout(
+                                        //     '${(selectedBox.length) * (int.parse(snapshot.data!.slot_price!))}');
                                       },
                                       child: Padding(
                                         padding: const EdgeInsets.all(15.0),

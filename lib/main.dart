@@ -1,6 +1,8 @@
 import 'package:cric8hemant/auth/login.dart';
 import 'package:cric8hemant/auth/signin.dart';
 import 'package:cric8hemant/const/storage.dart';
+import 'package:cric8hemant/pincode/mannual.dart';
+import 'package:cric8hemant/pincode/pincode.dart';
 import 'package:cric8hemant/screen/boot.dart';
 import 'package:cric8hemant/screen/bottombar.dart';
 import 'package:cric8hemant/screen/changepwd.dart';
@@ -48,6 +50,8 @@ class MyApp extends StatelessWidget {
         "/setpassword": (context) => Setpassword(),
         "/profile": (context) => Profile(),
         "/quickbook": (context) => QuickBook(),
+        '/pincode': (context) => PincodePage(),
+        '/mannual': (context) => MannualPage(),
       },
     );
   }

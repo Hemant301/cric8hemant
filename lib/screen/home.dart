@@ -42,22 +42,31 @@ class HomePage extends StatelessWidget {
                         //   padding: EdgeInsets.only(left: 8),
                         //   child: Text("Crick8inNet"),
                         // ),
-                        Container(
-                          padding: EdgeInsets.all(4),
-                          decoration: BoxDecoration(
-                              color: Colors.black,
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.share_location,
-                                color: Colors.white,
-                              ),
-                              Icon(
-                                Icons.arrow_drop_down,
-                                color: Colors.white,
-                              )
-                            ],
+                        InkWell(
+                          onTap: () {
+                            Navigator.popAndPushNamed(context, "/pincode");
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(4),
+                            decoration: BoxDecoration(
+                                color: Colors.black,
+                                borderRadius: BorderRadius.circular(10)),
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.share_location,
+                                  color: Colors.white,
+                                ),
+                                Icon(
+                                  Icons.arrow_drop_down,
+                                  color: Colors.white,
+                                ),
+                                Text(
+                                  userCred.getPincode(),
+                                  style: TextStyle(color: Colors.white),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                         IconButton(

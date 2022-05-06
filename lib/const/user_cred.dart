@@ -23,12 +23,21 @@ class UserCred {
     return isActive;
   }
 
+  String getPincode() {
+    String isActive = StorageUtil.getString('PINCODE');
+    return isActive;
+  }
+
   void addUserId(String id) {
     StorageUtil.putString('USERID', '$id');
   }
 
   void setUserFilledInfo(String info) {
     StorageUtil.putString('INFO', '$info');
+  }
+
+  void addPincode(String pin) {
+    StorageUtil.putString('PINCODE', '$pin');
   }
 
   void setUserUploadPhoto(String info) {

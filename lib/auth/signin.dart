@@ -240,7 +240,8 @@ class _SignupState extends State<Signup> {
                             if (data['status'] == 200) {
                               userCred.addUserId(
                                   data['user_info']['user_id'].toString());
-                              Navigator.pushReplacementNamed(context, "/boot");
+                              Navigator.pushReplacementNamed(
+                                  context, "/pincode");
                               Fluttertoast.showToast(msg: data['message']);
                             } else {
                               Fluttertoast.showToast(
