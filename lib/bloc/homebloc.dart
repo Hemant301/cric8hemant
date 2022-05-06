@@ -20,9 +20,9 @@ class HomeBloc {
 
   final BehaviorSubject<SlotModal> _liveSlot = BehaviorSubject<SlotModal>();
   BehaviorSubject<SlotModal> get getSlot => _liveSlot;
-  fetchslot() async {
+  fetchslot({String date = ""}) async {
     try {
-      SlotModal homeSlider = await _homeRepo.fetchslot();
+      SlotModal homeSlider = await _homeRepo.fetchslot(date: date);
       // print(homeSlider.imgs!.length);
 
       _liveSlot.add(homeSlider);

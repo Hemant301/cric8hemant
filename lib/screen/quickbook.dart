@@ -92,13 +92,13 @@ class _QuickBookState extends State<QuickBook> {
     print('see here');
     print(slectedPrice);
     print(selectedBox);
-
-    var sum = 0;
-    for (var i = 0; i < slectedPrice.length; i++) {
+     int i;
+ var sum =0;
+  for ( i=0 ; i<slectedPrice.length; i++) {
 // 	print(arr[i]);
-      sum += slectedPrice[i].toInt();
-      print(sum);
-    }
+     sum += slectedPrice[i].toInt();
+    print(sum);
+}
     print(selectedIndex.bitLength);
     homeBloc.fetchslot();
     return Scaffold(
