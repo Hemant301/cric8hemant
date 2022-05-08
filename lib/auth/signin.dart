@@ -23,7 +23,7 @@ class _SignupState extends State<Signup> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController1 = TextEditingController();
   final TextEditingController passwordController2 = TextEditingController();
-  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController refralController = TextEditingController();
 
   final GlobalKey<FormState> _form = GlobalKey<FormState>();
 
@@ -159,6 +159,15 @@ class _SignupState extends State<Signup> {
                         //       labelText: "Pin Code"),
                         // ),
                         TextFormField(
+                          controller: refralController,
+                          decoration: const InputDecoration(
+                              icon: Icon(
+                                Icons.person,
+                                color: Colors.black,
+                              ),
+                              labelText: "Referral Code (optional)"),
+                        ),
+                        TextFormField(
                           controller: passwordController1,
                           decoration: const InputDecoration(
                               icon: Icon(
@@ -167,15 +176,7 @@ class _SignupState extends State<Signup> {
                               ),
                               labelText: "create password"),
                         ),
-                        // TextFormField(
-                        //   controller: usernameController,
-                        //   decoration: const InputDecoration(
-                        //       icon: Icon(
-                        //         Icons.person,
-                        //         color: Colors.black,
-                        //       ),
-                        //       labelText: "User Name"),
-                        // ),
+
                         TextFormField(
                           controller: passwordController2,
                           decoration: const InputDecoration(
@@ -233,7 +234,7 @@ class _SignupState extends State<Signup> {
                               city: cityController.text,
                               pincode: pincodeController.text,
                               state: stateController.text,
-                              username: usernameController.text,
+                              refral: refralController.text,
                               password: passwordController1.text,
                             );
                             print(data);
