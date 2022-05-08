@@ -11,7 +11,7 @@ class AuthApi {
     String city = "",
     String pincode = "",
     String state = "",
-    String username = "",
+    String refral = "",
     String password = "",
   }) async {
     var client = http.Client();
@@ -26,7 +26,7 @@ class AuthApi {
             'city': city,
             'pincode': pincode,
             'state': state,
-            'username': username,
+            'refer': refral,
             'password': password,
           });
       if (response.statusCode == 200 || response.statusCode == 200) {

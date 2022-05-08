@@ -93,3 +93,21 @@ class SlotdataModal {
     price = js['price'];
   }
 }
+
+class CityModal {
+  List<CitymodalData> data = [];
+  CityModal(js) {
+    for (var i = 0; i < js['data'].length; i++) {
+      data.add(CitymodalData(js['data'][i]));
+    }
+  }
+}
+
+class CitymodalData {
+  String? id;
+  String? place;
+  CitymodalData(js) {
+    id = js['id'] ?? "";
+    place = js['place'] ?? "";
+  }
+}
