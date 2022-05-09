@@ -68,17 +68,17 @@ class _QuickBookState extends State<QuickBook> {
     //     emi_id: "0",
     //     isemi: '0',
     //     monthid: '0');
-    homeApi.confirmBooking(
+    Map data = await homeApi.confirmBooking(
         date: dateController.text,
         slot_id: selectedBox,
         payid: response.paymentId!);
-    Fluttertoast.showToast(
-        msg: "SUCCESS: " + response.paymentId!,
-        toastLength: Toast.LENGTH_SHORT);
-    Navigator.pushReplacementNamed(
-      context, '/ticket',
-      // arguments: {'amount': amount}
-    );
+    if (data['status'] == 200) {
+      Fluttertoast.showToast(
+          msg: "SUCCESS: " + response.paymentId!,
+          toastLength: Toast.LENGTH_SHORT);
+      Navigator.pushReplacementNamed(context, '/ticket',
+          arguments: {'id': data['booking_id']});
+    } else {}
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {

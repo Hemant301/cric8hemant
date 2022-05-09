@@ -59,15 +59,43 @@ class HomeBloc {
     }
   }
 
-  final BehaviorSubject<WalletModal> liveWallet =
-      BehaviorSubject<WalletModal>();
-  BehaviorSubject<WalletModal> get getWallet => liveWallet;
+  final BehaviorSubject<WalletdetailModal> liveWallet =
+      BehaviorSubject<WalletdetailModal>();
+  BehaviorSubject<WalletdetailModal> get getWallet => liveWallet;
   fetchWallet() async {
     try {
-      WalletModal homeSlider = await _homeRepo.fetchWallet();
+      WalletdetailModal homeSlider = await _homeRepo.fetchWallet();
       // print(homeSlider.imgs!.length);
 
       liveWallet.add(homeSlider);
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  final BehaviorSubject<TicketModal> liveTicket =
+      BehaviorSubject<TicketModal>();
+  BehaviorSubject<TicketModal> get getTicket => liveTicket;
+  fetchTicket(id) async {
+    try {
+      TicketModal homeSlider = await _homeRepo.fetchTicket(id);
+      // print(homeSlider.imgs!.length);
+
+      liveTicket.add(homeSlider);
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  final BehaviorSubject<AllticketModal> liveallticket =
+      BehaviorSubject<AllticketModal>();
+  BehaviorSubject<AllticketModal> get getallTicket => liveallticket;
+  fetchallTicket() async {
+    try {
+      AllticketModal homeSlider = await _homeRepo.fetchallTicket();
+      // print(homeSlider.imgs!.length);
+
+      liveallticket.add(homeSlider);
     } catch (e) {
       print(e);
     }

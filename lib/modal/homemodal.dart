@@ -112,9 +112,102 @@ class CitymodalData {
   }
 }
 
+class WalletdetailModal {
+  List<WalletModal> data = [];
+  WalletdetailModal(js) {
+    for (var i = 0; i < js['wallet'].length; i++) {
+      data.add(WalletModal(js['wallet'][i]));
+    }
+  }
+}
+
 class WalletModal {
-  int? wallet;
+  String? wallet;
   WalletModal(js) {
     wallet = js['wallet'] ?? "";
+  }
+}
+
+class TicketModal {
+  List<UserticketModal> userData = [];
+  List<TicketdetailModal> ticket = [];
+  TicketModal(js) {
+    for (var i = 0; i < js['user_details'].length; i++) {
+      userData.add(UserticketModal(js['user_details'][i]));
+    }
+    for (var i = 0; i < js['ticket'].length; i++) {
+      ticket.add(TicketdetailModal(js['ticket'][i]));
+    }
+  }
+}
+
+class UserticketModal {
+  String? name;
+  String? last_name;
+  String? mob_no;
+  String? city;
+  String? pincode;
+  String? date;
+  UserticketModal(js) {
+    name = js['name'] ?? "";
+    last_name = js['last_name'] ?? "";
+    mob_no = js['mob_no'] ?? "";
+    city = js['city'] ?? "";
+    pincode = js['pincode'] ?? "";
+  }
+}
+
+class TicketdetailModal {
+  String? venue_start_time;
+  String? venue_end_time;
+  String? price;
+  String? date;
+  TicketdetailModal(js) {
+    venue_start_time = js['venue_start_time'] ?? "";
+    venue_end_time = js['venue_end_time'] ?? "";
+    price = js['price'] ?? "";
+    date = js['date'] ?? "";
+  }
+}
+
+class AllticketModal {
+  List<UserallticketModal> userData = [];
+  List<TicketalldetailModal> ticket = [];
+  AllticketModal(js) {
+    for (var i = 0; i < js['user_details'].length; i++) {
+      userData.add(UserallticketModal(js['user_details'][i]));
+    }
+    for (var i = 0; i < js['ticket'].length; i++) {
+      ticket.add(TicketalldetailModal(js['ticket'][i]));
+    }
+  }
+}
+
+class UserallticketModal {
+  String? name;
+  String? last_name;
+  String? mob_no;
+  String? city;
+  String? pincode;
+  String? date;
+  UserallticketModal(js) {
+    name = js['name'] ?? "";
+    last_name = js['last_name'] ?? "";
+    mob_no = js['mob_no'] ?? "";
+    city = js['city'] ?? "";
+    pincode = js['pincode'] ?? "";
+  }
+}
+
+class TicketalldetailModal {
+  String? venue_start_time;
+  String? venue_end_time;
+  String? price;
+  String? date;
+  TicketalldetailModal(js) {
+    venue_start_time = js['venue_start_time'] ?? "";
+    venue_end_time = js['venue_end_time'] ?? "";
+    price = js['price'] ?? "";
+    date = js['date'] ?? "";
   }
 }
