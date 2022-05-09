@@ -72,7 +72,39 @@ class HomeApi {
   Future<dynamic> fetchWallet() async {
     try {
       final response = await client.post(
-          Uri.parse("${baseUrl}api/Users/referal"),
+          Uri.parse("${baseUrl}api/Users/view_wallet"),
+          body: {'user_id': userCred.getUserId()});
+      if (response.statusCode == 200) {
+        print(response.body);
+        return response;
+      } else {
+        // print('Request failed with status: ${response.statusCode}.');
+      }
+    } catch (e) {
+      // print(e);
+    } finally {}
+  }
+
+  Future<dynamic> fetchTicket(id) async {
+    try {
+      final response = await client.post(
+          Uri.parse("${baseUrl}api/Users/view_ticket"),
+          body: {'booking_id': '$id'});
+      if (response.statusCode == 200) {
+        print(response.body);
+        return response;
+      } else {
+        // print('Request failed with status: ${response.statusCode}.');
+      }
+    } catch (e) {
+      // print(e);
+    } finally {}
+  }
+
+  Future<dynamic> fetchallTicket() async {
+    try {
+      final response = await client.post(
+          Uri.parse("${baseUrl}api/Users/ticket_generate"),
           body: {'user_id': userCred.getUserId()});
       if (response.statusCode == 200) {
         print(response.body);

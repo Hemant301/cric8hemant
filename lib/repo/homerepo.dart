@@ -29,9 +29,21 @@ class HomeRepo {
     return CityModal(jsonResponse);
   }
 
-  Future<WalletModal> fetchWallet() async {
+  Future<WalletdetailModal> fetchWallet() async {
     final response = await homeApi.fetchWallet();
     var jsonResponse = jsonDecode(response.body) as Map;
-    return WalletModal(jsonResponse);
+    return WalletdetailModal(jsonResponse);
+  }
+
+  Future<TicketModal> fetchTicket(id) async {
+    final response = await homeApi.fetchTicket(id);
+    var jsonResponse = jsonDecode(response.body) as Map;
+    return TicketModal(jsonResponse);
+  }
+
+  Future<AllticketModal> fetchallTicket() async {
+    final response = await homeApi.fetchallTicket();
+    var jsonResponse = jsonDecode(response.body) as Map;
+    return AllticketModal(jsonResponse);
   }
 }

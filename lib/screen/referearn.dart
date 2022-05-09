@@ -31,7 +31,7 @@ class _ReferearnState extends State<Referearn> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     BackButtonss(),
-                    StreamBuilder<WalletModal>(
+                    StreamBuilder<WalletdetailModal>(
                         stream: homeBloc.getWallet.stream,
                         builder: (context, snapshot) {
                           if (!snapshot.hasData) return Container();
@@ -46,7 +46,7 @@ class _ReferearnState extends State<Referearn> {
                             child: Row(
                               children: [
                                 Icon(Icons.wallet_travel_rounded),
-                                Text(snapshot.data!.wallet.toString())
+                                Text(snapshot.data!.data[0].wallet!)
                               ],
                             ),
                           );
