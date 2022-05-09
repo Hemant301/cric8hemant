@@ -3,7 +3,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
    <application
-        android:label="cric8hemant"
+        android:label="CRIC8inNET"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

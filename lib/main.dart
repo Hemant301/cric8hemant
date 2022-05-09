@@ -3,6 +3,7 @@ import 'package:cric8hemant/auth/signin.dart';
 import 'package:cric8hemant/const/storage.dart';
 import 'package:cric8hemant/pincode/mannual.dart';
 import 'package:cric8hemant/pincode/pincode.dart';
+import 'package:cric8hemant/screen/bookinghistory.dart';
 import 'package:cric8hemant/screen/boot.dart';
 import 'package:cric8hemant/screen/bottombar.dart';
 import 'package:cric8hemant/screen/changepwd.dart';
@@ -54,6 +55,7 @@ class MyApp extends StatelessWidget {
         '/pincode': (context) => PincodePage(),
         '/mannual': (context) => MannualPage(),
         '/ticket': (context) => Ticket(),
+        "/bookinghistory": (context) => BookingHistory()
       },
     );
   }

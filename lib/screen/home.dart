@@ -216,6 +216,10 @@ class HomePage extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               Cont(
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                      context, "/bookinghistory");
+                                },
                                 title: "My",
                                 title1: "calender",
                                 icon: Icons.calendar_month_sharp,
