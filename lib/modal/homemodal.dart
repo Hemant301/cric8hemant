@@ -111,3 +111,10 @@ class CitymodalData {
     place = js['place'] ?? "";
   }
 }
+
+class WalletModal {
+  int? wallet;
+  WalletModal(js) {
+    wallet = js['wallet'] ?? "";
+  }
+}

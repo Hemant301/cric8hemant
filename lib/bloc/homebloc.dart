@@ -58,6 +58,20 @@ class HomeBloc {
       print(e);
     }
   }
+
+  final BehaviorSubject<WalletModal> liveWallet =
+      BehaviorSubject<WalletModal>();
+  BehaviorSubject<WalletModal> get getWallet => liveWallet;
+  fetchWallet() async {
+    try {
+      WalletModal homeSlider = await _homeRepo.fetchWallet();
+      // print(homeSlider.imgs!.length);
+
+      liveWallet.add(homeSlider);
+    } catch (e) {
+      print(e);
+    }
+  }
 }
 
 final homeBloc = HomeBloc();

@@ -1,3 +1,6 @@
+import 'package:cric8hemant/bloc/homebloc.dart';
+import 'package:cric8hemant/modal/homemodal.dart';
+import 'package:cric8hemant/screen/book.dart';
 import 'package:flutter/material.dart';
 
 class Referearn extends StatefulWidget {
@@ -10,6 +13,7 @@ class Referearn extends StatefulWidget {
 class _ReferearnState extends State<Referearn> {
   @override
   Widget build(BuildContext context) {
+    homeBloc.fetchWallet();
     return SafeArea(
       child: Scaffold(
         body: Stack(children: [
@@ -23,9 +27,31 @@ class _ReferearnState extends State<Referearn> {
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Align(
-                  alignment: Alignment.topLeft,
-                  child: BackButtonss(),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    BackButtonss(),
+                    StreamBuilder<WalletModal>(
+                        stream: homeBloc.getWallet.stream,
+                        builder: (context, snapshot) {
+                          if (!snapshot.hasData) return Container();
+                          return Container(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 30, vertical: 10),
+                            decoration: BoxDecoration(
+                                border:
+                                    Border.all(color: Colors.black, width: 4),
+                                color: Color.fromARGB(255, 253, 253, 253),
+                                borderRadius: BorderRadius.circular(50)),
+                            child: Row(
+                              children: [
+                                Icon(Icons.wallet_travel_rounded),
+                                Text(snapshot.data!.wallet.toString())
+                              ],
+                            ),
+                          );
+                        })
+                  ],
                 ),
               ),
               SizedBox(

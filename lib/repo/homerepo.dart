@@ -28,4 +28,10 @@ class HomeRepo {
     var jsonResponse = jsonDecode(response.body) as Map;
     return CityModal(jsonResponse);
   }
+
+  Future<WalletModal> fetchWallet() async {
+    final response = await homeApi.fetchWallet();
+    var jsonResponse = jsonDecode(response.body) as Map;
+    return WalletModal(jsonResponse);
+  }
 }

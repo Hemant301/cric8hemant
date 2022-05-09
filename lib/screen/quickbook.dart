@@ -76,7 +76,7 @@ class _QuickBookState extends State<QuickBook> {
         msg: "SUCCESS: " + response.paymentId!,
         toastLength: Toast.LENGTH_SHORT);
     Navigator.pushReplacementNamed(
-      context, '/boot',
+      context, '/ticket',
       // arguments: {'amount': amount}
     );
   }

@@ -16,6 +16,7 @@ import 'package:cric8hemant/screen/quickbook.dart';
 import 'package:cric8hemant/screen/referearn.dart';
 import 'package:cric8hemant/screen/setpassword.dart';
 import 'package:cric8hemant/screen/splashascreen.dart';
+import 'package:cric8hemant/screen/ticket.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
@@ -52,6 +53,7 @@ class MyApp extends StatelessWidget {
         "/quickbook": (context) => QuickBook(),
         '/pincode': (context) => PincodePage(),
         '/mannual': (context) => MannualPage(),
+        '/ticket': (context) => Ticket(),
       },
     );
   }

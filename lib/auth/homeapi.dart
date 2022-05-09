@@ -69,6 +69,22 @@ class HomeApi {
     } finally {}
   }
 
+  Future<dynamic> fetchWallet() async {
+    try {
+      final response = await client.post(
+          Uri.parse("${baseUrl}api/Users/referal"),
+          body: {'user_id': userCred.getUserId()});
+      if (response.statusCode == 200) {
+        print(response.body);
+        return response;
+      } else {
+        // print('Request failed with status: ${response.statusCode}.');
+      }
+    } catch (e) {
+      // print(e);
+    } finally {}
+  }
+
   Future<dynamic> forgotPass(String phone) async {
     var client = http.Client();
     try {
