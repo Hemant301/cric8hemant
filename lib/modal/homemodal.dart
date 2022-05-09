@@ -204,10 +204,12 @@ class TicketalldetailModal {
   String? venue_end_time;
   String? price;
   String? date;
+  String? booking_id;
   TicketalldetailModal(js) {
     venue_start_time = js['venue_start_time'] ?? "";
     venue_end_time = js['venue_end_time'] ?? "";
     price = js['price'] ?? "";
     date = js['date'] ?? "";
+    booking_id = js['booking_id'] ?? "";
   }
 }
