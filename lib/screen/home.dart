@@ -20,18 +20,18 @@ class HomePage extends StatelessWidget {
                 image: AssetImage('assets/homebg.png')),
             Column(
               children: [
-                const Padding(
-                  padding: EdgeInsets.only(left: 8),
-                  child: Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      "Crick8inNet",
-                      textAlign: TextAlign.left,
-                      style:
-                          TextStyle(color: Colors.white, fontFamily: "bolds"),
-                    ),
-                  ),
-                ),
+                // const Padding(
+                //   padding: EdgeInsets.only(left: 8),
+                //   child: Align(
+                //     alignment: Alignment.topLeft,
+                //     child: Text(
+                //       "Crick8inNet",
+                //       textAlign: TextAlign.left,
+                //       style:
+                //           TextStyle(color: Colors.white, fontFamily: "bolds"),
+                //     ),
+                //   ),
+                // ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: InkWell(

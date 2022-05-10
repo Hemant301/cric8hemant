@@ -8,7 +8,7 @@ class SplahScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Future.delayed(Duration(seconds: 3), () {
       if (userCred.isUserLogin()) {
-        Navigator.pushReplacementNamed(context, "/home");
+        Navigator.pushReplacementNamed(context, "/boot");
       } else {
         Navigator.pushReplacementNamed(context, "/choselogin");
       }

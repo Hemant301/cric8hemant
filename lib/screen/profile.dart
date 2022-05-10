@@ -117,30 +117,50 @@ class _ProfileState extends State<Profile> {
                   SizedBox(
                     height: 30,
                   ),
-                  Container(
-                    height: 130,
-                    width: 130,
-                    decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 109, 34, 34),
-                        // boxShadow: [
-                        //   BoxShadow(
-                        //     color: Colors.grey.withOpacity(0.4),
-                        //     spreadRadius: 1,
-                        //     blurRadius: 1,
-                        //     offset: Offset(1, 3), // changes position of shadow
-                        //   ),
-                        // ],
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(
-                            color: Color.fromARGB(255, 251, 251, 251),
-                            width: 5)),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(15),
-                      child: Image.network(
-                        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80",
-                        fit: BoxFit.cover,
+                  Stack(
+                    children: [
+                      Container(
+                        height: 130,
+                        width: 130,
+                        decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 109, 34, 34),
+                            // boxShadow: [
+                            //   BoxShadow(
+                            //     color: Colors.grey.withOpacity(0.4),
+                            //     spreadRadius: 1,
+                            //     blurRadius: 1,
+                            //     offset: Offset(1, 3), // changes position of shadow
+                            //   ),
+                            // ],
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(
+                                color: Color.fromARGB(255, 251, 251, 251),
+                                width: 5)),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(15),
+                          child: Image.network(
+                            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80",
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                       ),
-                    ),
+                      Positioned(
+                          right: -10,
+                          child: Container(
+                            height: 30,
+                            width: 30,
+                            color: Colors.white.withOpacity(0.2),
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.edit,
+                                  color: Colors.black,
+                                ),
+                                Text("edit")
+                              ],
+                            ),
+                          ))
+                    ],
                   ),
                   SizedBox(
                     height: 10,
@@ -165,13 +185,13 @@ class _ProfileState extends State<Profile> {
                   SizedBox(
                     height: 4,
                   ),
-                  Text(
-                    "19 year old",
-                    style: TextStyle(
-                        color: Color.fromARGB(255, 182, 184, 184),
-                        // fontWeight: FontWeight.bold,
-                        fontSize: 16),
-                  ),
+                  // Text(
+                  //   "19 year old",
+                  //   style: TextStyle(
+                  //       color: Color.fromARGB(255, 182, 184, 184),
+                  //       // fontWeight: FontWeight.bold,
+                  //       fontSize: 16),
+                  // ),
                   Textfild(
                     hints: "First Name",
                     controller: nameController,
@@ -258,7 +278,7 @@ class _ProfileState extends State<Profile> {
                     height: 5,
                   ),
                   Textfild(
-                    hints: "Refred by",
+                    hints: "Refered by",
                     // lable: "Last Name",
                     suffix: Text(
                       "Verify",

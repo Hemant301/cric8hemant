@@ -1,4 +1,5 @@
 import 'package:cric8hemant/bloc/homebloc.dart';
+import 'package:cric8hemant/const/user_cred.dart';
 import 'package:cric8hemant/modal/homemodal.dart';
 import 'package:cric8hemant/screen/book.dart';
 import 'package:cric8hemant/screen/referearn.dart';
@@ -209,7 +210,11 @@ class MyProfile extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10)),
                           child: TextButton(
                               onPressed: () {
-                                Navigator.pushNamed(context, "/profile");
+                                if (userCred.isUserLogin()) {
+                                  Navigator.pushNamed(context, "/profile");
+                                } else {
+                                  Navigator.pushNamed(context, "/login");
+                                }
                               },
                               child: const Text(
                                 "Update Now",
@@ -224,25 +229,177 @@ class MyProfile extends StatelessWidget {
                 ]),
               ),
               SizedBox(
-                height: 40,
+                height: 80,
               ),
-              InkWell(
-                onTap: () {
-                  Navigator.pushNamed(context, "/bookinghistory");
-                },
-                child: Text(
-                  "Booking",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold),
+              // InkWell(
+              //   onTap: () {
+              //     Navigator.pushNamed(context, "/bookinghistory");
+              //   },
+              //   child: Text(
+              //     "Booking",
+              //     style: TextStyle(
+              //         color: Colors.black,
+              //         fontSize: 18,
+              //         fontWeight: FontWeight.bold),
+              //   ),
+              // ),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: 180,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image:
+                            AssetImage("assets/620-fc-21382557@3x (2).png"))),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Match\nthe Power",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Container(
+                            height: 100,
+                            width: 100,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Color.fromARGB(255, 79, 78, 78),
+                            ),
+                            child: Column(
+                              children: [
+                                Container(
+                                  width: 100,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.only(
+                                        topRight: Radius.circular(10),
+                                        topLeft: Radius.circular(10)),
+                                    color: Colors.grey,
+                                  ),
+                                  padding: EdgeInsets.all(8),
+                                  child: Center(
+                                    child: Text(
+                                      "Active Level",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                Center(
+                                  child: Text(
+                                    "warm-up",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.monitor_heart,
+                                  color: Colors.white,
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ]),
+              ),
+
+              Container(
+                width: MediaQuery.of(context).size.width - 80,
+                height: 80,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(20),
+                      bottomRight: Radius.circular(20)),
+                  color: Color.fromARGB(255, 5, 4, 4),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            if (userCred.isUserLogin()) {
+                              Navigator.pushNamed(context, "/profile");
+                            } else {
+                              Navigator.pushNamed(context, "/login");
+                            }
+                          },
+                          child: Text(
+                            "Edit Profile",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        Icon(
+                          Icons.person,
+                          color: Colors.white,
+                        )
+                      ],
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Manage Team",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Icon(
+                          Icons.manage_accounts,
+                          color: Colors.white,
+                        )
+                      ],
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, "/bookinghistory");
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "My Booking",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Icon(
+                            Icons.note_add,
+                            color: Colors.white,
+                          )
+                        ],
+                      ),
+                    )
+                  ],
                 ),
               ),
-              // Container(
-              //   width: MediaQuery.of(context).size.width,
-              //   height: 120,
-              // decoration:BoxDecoration()
-              // )
+              SizedBox(
+                height: 30,
+              )
             ]),
       ),
     );
