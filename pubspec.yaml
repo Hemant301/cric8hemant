@@ -47,6 +47,7 @@ dependencies:
   location: ^4.3.0
   flutter_geocoder: ^0.2.2-nullsafety
   flutter_dropdown: ^1.0.0+hotfix.1
+  file_picker: ^4.5.1
 
 dev_dependencies:
   flutter_test:

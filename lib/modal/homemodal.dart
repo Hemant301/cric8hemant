@@ -37,8 +37,10 @@ class VenueListModal {
 
 class UserdetailModal {
   UserDataModal? data;
+  String? img;
   UserdetailModal(js) {
     data = UserDataModal(js['data']);
+    img = js['image_url'] ?? "";
   }
 }
 

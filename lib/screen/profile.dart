@@ -1,7 +1,14 @@
+import 'dart:io';
+
+import 'package:cric8hemant/api/updateprofile.dart';
 import 'package:cric8hemant/auth/homeapi.dart';
 import 'package:cric8hemant/bloc/homebloc.dart';
+import 'package:cric8hemant/const/sharedfunction.dart';
+import 'package:cric8hemant/const/user_cred.dart';
+import 'package:cric8hemant/modal/homemodal.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:file_picker/file_picker.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -32,15 +39,16 @@ class _ProfileState extends State<Profile> {
     Future.delayed(Duration(seconds: 0), () {
       homeBloc.liveUserData.listen((value) {
         nameController.text = value.data!.name!;
-        setState(() {
-          userName = value.data!.name!;
-        });
+
         lastnameController.text = value.data!.lastname!;
         emailController.text = value.data!.email!;
         mobnoController.text = value.data!.mobile!;
         stateController.text = value.data!.state!;
         cityController.text = value.data!.city!;
         pincodeController.text = value.data!.pincode!;
+        setState(() {
+          userName = value.data!.name!;
+        });
         // nameController.text = value.data!.name!;
       });
     });
@@ -117,51 +125,90 @@ class _ProfileState extends State<Profile> {
                   SizedBox(
                     height: 30,
                   ),
-                  Stack(
-                    children: [
-                      Container(
-                        height: 130,
-                        width: 130,
-                        decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 109, 34, 34),
-                            // boxShadow: [
-                            //   BoxShadow(
-                            //     color: Colors.grey.withOpacity(0.4),
-                            //     spreadRadius: 1,
-                            //     blurRadius: 1,
-                            //     offset: Offset(1, 3), // changes position of shadow
-                            //   ),
-                            // ],
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(
-                                color: Color.fromARGB(255, 251, 251, 251),
-                                width: 5)),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(15),
-                          child: Image.network(
-                            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80",
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                          right: -10,
-                          child: Container(
-                            height: 30,
-                            width: 30,
-                            color: Colors.white.withOpacity(0.2),
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.edit,
-                                  color: Colors.black,
+                  StreamBuilder<UserdetailModal>(
+                      stream: homeBloc.getUserdetails.stream,
+                      builder: (context, snapshot) {
+                        if (!snapshot.hasData) return Container();
+                        return Stack(
+                          children: [
+                            Container(
+                              height: 130,
+                              width: 130,
+                              decoration: BoxDecoration(
+                                  color: Color.fromARGB(255, 109, 34, 34),
+                                  // boxShadow: [
+                                  //   BoxShadow(
+                                  //     color: Colors.grey.withOpacity(0.4),
+                                  //     spreadRadius: 1,
+                                  //     blurRadius: 1,
+                                  //     offset: Offset(1, 3), // changes position of shadow
+                                  //   ),
+                                  // ],
+                                  borderRadius: BorderRadius.circular(20),
+                                  border: Border.all(
+                                      color: Color.fromARGB(255, 251, 251, 251),
+                                      width: 5)),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(15),
+                                child: Image.network(
+                                  snapshot.data!.img!,
+                                  fit: BoxFit.cover,
                                 ),
-                                Text("edit")
-                              ],
+                              ),
                             ),
-                          ))
-                    ],
-                  ),
+                            Positioned(
+                                right: -10,
+                                child: InkWell(
+                                  onTap: () async {
+                                    try {
+                                      FilePickerResult? result =
+                                          await FilePicker.platform.pickFiles();
+                                      if (result != null) {
+                                        File file =
+                                            File(result.files.single.path!);
+                                        print(file.path);
+                                        showProgressDialog(context);
+                                        Upadteprofileapi _api =
+                                            Upadteprofileapi();
+                                        Map data = await _api.doUploadProfile(
+                                            file, userCred.getUserId());
+                                        print(data);
+                                        if (data['status'] == 200) {
+                                          positiveToast(data['message']);
+                                          setState(() {
+                                            homeBloc.getuserData();
+                                          });
+                                          // profileBloc.fetchProfile();
+                                        } else {
+                                          negetiveToast(data['message']);
+                                        }
+                                        Navigator.pop(context);
+                                      } else {
+                                        negetiveToast("Something went wrong");
+                                        // User canceled the picker
+                                      }
+                                    } catch (e) {
+                                      negetiveToast(e.toString());
+                                    }
+                                  },
+                                  child: Container(
+                                    height: 30,
+                                    width: 30,
+                                    color: Colors.white.withOpacity(0.2),
+                                    child: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.edit,
+                                          color: Colors.black,
+                                        ),
+                                        Text("edit")
+                                      ],
+                                    ),
+                                  ),
+                                ))
+                          ],
+                        );
+                      }),
                   SizedBox(
                     height: 10,
                   ),
