@@ -14,12 +14,14 @@ class SplahScreen extends StatelessWidget {
       }
     });
     return Scaffold(
-        body: Image(
-      fit: BoxFit.cover,
-      height: double.infinity,
-      width: double.infinity,
-      alignment: Alignment.center,
-      image: AssetImage('assets/splash.png'),
+        body: Center(
+      child: Image(
+        fit: BoxFit.cover,
+        // height: double.infinity,
+        // width: double.infinity,
+        // alignment: Alignment.center,
+        image: AssetImage('assets/logo1.png'),
+      ),
     ));
   }
 }

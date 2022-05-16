@@ -323,7 +323,7 @@ class HomePage extends StatelessWidget {
                                       padding: EdgeInsets.all(18.0),
                                       child: CircleAvatar(
                                         backgroundImage:
-                                            AssetImage('assets/logo.png'),
+                                            AssetImage('assets/logo1.png'),
                                       ),
                                     ),
                                     Text(
@@ -370,7 +370,7 @@ class HomePage extends StatelessWidget {
                                       padding: EdgeInsets.all(18.0),
                                       child: CircleAvatar(
                                         backgroundImage:
-                                            AssetImage('assets/logo.png'),
+                                            AssetImage('assets/logo1.png'),
                                       ),
                                     ),
                                     Text(
